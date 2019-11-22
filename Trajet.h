@@ -28,21 +28,21 @@ class Trajet
 
 public:
 	//----------------------------------------------------- Méthodes publiques
-	virtual char* GetVilleDepart();
+	virtual char* GetVilleDepart() = 0;
 	// Mode d'emploi :
 	// Retourne la ville de départ du trajet sous forme de tableau de caractère
 	// Retourne NULL si méthode non surchargée (implémentée par une classe enfant)
 	// Contrat : 
 	// 
 
-	virtual char* GetVilleArrivee();
+	virtual char* GetVilleArrivee() = 0;
 	// Mode d'emploi :
 	// Retourne la ville d'arrivée du trajet sous forme de tableau de caractère
 	// Retourne NULL si méthode non surchargée (implémentée par une classe enfant)
 	// Contrat : 
 	// 
 
-	virtual void Affiche();
+	virtual const void Affiche() = 0;
 	// Mode d'emploi :
 	// Affiche le trajet 
 	// Affiche '{Non implémentée}' si méthode non surchargée (implémentée par une classe enfant)
@@ -71,19 +71,12 @@ public:
 
 protected:
 	//----------------------------------------------------- Méthodes protégées
-	
-	//CONSTRUCTEUR PROTECTED
-	Trajet();
-	// Mode d'emploi :
-	// Instancie un trajet vide, utilisable uniquement par les classes enfants
-	// Contrat :
-	//
 
 	//----------------------------------------------------- Attributs protégés
 
 };
 
-//-------------------------------- Autres définitions dépendantes de <Ensemble>
+//-------------------------------- Autres définitions dépendantes de <Trajet>
 
-#endif // ENSEMBLE_H
+#endif // TRAJET_H
 

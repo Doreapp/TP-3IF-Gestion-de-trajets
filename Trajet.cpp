@@ -1,16 +1,16 @@
 /*************************************************************************
-						   Trajet  -  Classe représentant un trajet
+						   Trajet  -  Classe repr�sentant un trajet
 							 -------------------
-	début                : 22/11/2019 - /
+	d�but                : 22/11/2019 - /
 	copyright            : (C) 2019/2020 par Carreau Damien et Mandin Antoine
 	e-mail               : antoine.mandin@insa-lyon.fr / damien.carreau@insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <Trajet> (fichier Trajet.cpp) ------------
+//---------- R�alisation de la classe <Trajet> (fichier Trajet.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include système
+//-------------------------------------------------------- Include syst�me
 #include <iostream>
 using namespace std;
 
@@ -21,35 +21,15 @@ using namespace std;
 
 //----------------------------------------------------------------- PUBLIC
 
-//----------------------------------------------------- Méthodes publiques
-// type Ensemble::Méthode ( liste des paramètres )
+//----------------------------------------------------- M�thodes publiques
+// type Ensemble::M�thode ( liste des param�tres )
 // Algorithme :
 //
 //{
-//} //----- Fin de Méthode
+//} //----- Fin de M�thode
 
-char* Trajet::GetVilleDepart()
-// Algorithme : 
-// Méthode vide, à implémentée par les classes enfants
-{
-	return nullptr;
-}//----- Fin de GetVilleDepart
 
-char* Trajet::GetVilleArrivee()
-// Algorithme : 
-// Méthode vide, à implémentée par les classes enfants
-{
-	return nullptr;
-}//----- Fin de GetVilleArrivee
-
-void Trajet::Affiche()
-// Algorithme : 
-// Méthode vide, à implémentée par les classes enfants
-{
-	cout << "{Non implémentée}" << endl;
-}//----- Fin de Affiche
-
-//------------------------------------------------- Surcharge d'opérateurs
+//------------------------------------------------- Surcharge d'op�rateurs
 Trajet& Trajet::operator = (const Trajet& unEnsemble)
 // Algorithme :
 //
@@ -72,7 +52,7 @@ Trajet::~Trajet()
 
 //------------------------------------------------------------------ PRIVE
 
-//----------------------------------------------------- Méthodes protégées
+//----------------------------------------------------- M�thodes prot�g�es
 Trajet::Trajet() 
 // Algorithme :
 // Instancie un trajet vide
