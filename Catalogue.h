@@ -22,6 +22,12 @@
 //
 //------------------------------------------------------------------------
 
+typedef struct sListe{
+	Trajet* tableau;
+	int allocation;
+	int taille;
+} Liste;
+
 class Catalogue 
 {
 //----------------------------------------------------------------- PUBLIC
@@ -82,7 +88,7 @@ private:
 
 	Liste* trajets;
 	// Enregistre tous les trajets du catalogue
-
+	
 };
 
 #endif // CATALOGUE_H
