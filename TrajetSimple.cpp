@@ -12,6 +12,7 @@
 
 //-------------------------------------------------------- Include système
 #include <iostream>
+#include <cstring>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -49,24 +50,34 @@ TrajetSimple& TrajetSimple::operator = (const TrajetSimple& unTrajetSimple)
 //-------------------------------------------- Constructeurs - destructeur
 
 
-TrajetSimple::TrajetSimple(const char* villeDepart, const char* villeArrivee, const char* transport)
+TrajetSimple::TrajetSimple(const char* villeDepart, const char* villeArrivee, const char* transport) 
 // Algorithme :
-//
+// copy pure et simple des valeurs
 {
-	//TODO ! 
 #ifdef MAP
-	cout << "Appel au constructeur de <Ensemble>" << endl;
+	cout << "Appel au constructeur de <TrajetSimple>" << endl;
 #endif
+	this->villeDepart = new char[strlen(villeDepart) + 1];
+	this->villeArrivee = new char[strlen(villeDepart) + 1];
+	this->transport = new char[strlen(villeDepart) + 1];
+
+	strcpy(this->villeDepart, villeDepart);
+	strcpy(this->villeArrivee, villeArrivee);
+	strcpy(this->transport, transport);
 } //----- Fin de Ensemble
 
 
 TrajetSimple::~TrajetSimple()
 // Algorithme :
-//
+// Libère les différentes variable mémoire (3 char* ici)
 {
 #ifdef MAP
-	cout << "Appel au destructeur de <Ensemble>" << endl;
+	cout << "Appel au destructeur de <TrajetSimple>" << endl;
 #endif
+	
+	delete[] villeArrivee;
+	delete[] villeDepart;
+	delete[] transport;
 } //----- Fin de ~TrajetSimple
 
 
