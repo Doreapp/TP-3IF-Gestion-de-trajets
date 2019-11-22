@@ -1,16 +1,16 @@
 /*************************************************************************
-						   Trajet  -  Classe représentant un trajet
+						   Trajet  -  Classe reprÃ©sentant un trajet
 							 -------------------
-	début                : 22/11/2019 - /
+	dÃ©but                : 22/11/2019 - /
 	copyright            : (C) 2019/2020 par Carreau Damien et Mandin Antoine
 	e-mail               : antoine.mandin@insa-lyon.fr / damien.carreau@insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <Trajet> (fichier Trajet.cpp) ------------
+//---------- RÃ©alisation de la classe <Trajet> (fichier Trajet.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include système
+//-------------------------------------------------------- Include systÃ¨me
 #include <iostream>
 using namespace std;
 
@@ -21,35 +21,35 @@ using namespace std;
 
 //----------------------------------------------------------------- PUBLIC
 
-//----------------------------------------------------- Méthodes publiques
-// type Ensemble::Méthode ( liste des paramètres )
+//----------------------------------------------------- MÃ©thodes publiques
+// type Ensemble::MÃ©thode ( liste des paramÃ¨tres )
 // Algorithme :
 //
 //{
-//} //----- Fin de Méthode
+//} //----- Fin de MÃ©thode
 
 char* Trajet::GetVilleDepart()
 // Algorithme : 
-// Méthode vide, à implémentée par les classes enfants
+// MÃ©thode vide, Ã  implÃ©mentÃ©e par les classes enfants
 {
 	return nullptr;
 }//----- Fin de GetVilleDepart
 
 char* Trajet::GetVilleArrivee()
 // Algorithme : 
-// Méthode vide, à implémentée par les classes enfants
+// MÃ©thode vide, Ã  implÃ©mentÃ©e par les classes enfants
 {
 	return nullptr;
 }//----- Fin de GetVilleArrivee
 
 void Trajet::Affiche()
 // Algorithme : 
-// Méthode vide, à implémentée par les classes enfants
+// MÃ©thode vide, Ã  implÃ©mentÃ©e par les classes enfants
 {
-	cout << "{Non implémentée}" << endl;
+	cout << "{Non implÃ©mentÃ©e}" << endl;
 }//----- Fin de Affiche
 
-//------------------------------------------------- Surcharge d'opérateurs
+//------------------------------------------------- Surcharge d'opÃ©rateurs
 Trajet& Trajet::operator = (const Trajet& unEnsemble)
 // Algorithme :
 //
@@ -72,7 +72,7 @@ Trajet::~Trajet()
 
 //------------------------------------------------------------------ PRIVE
 
-//----------------------------------------------------- Méthodes protégées
+//----------------------------------------------------- MÃ©thodes protÃ©gÃ©es
 Trajet::Trajet() 
 // Algorithme :
 // Instancie un trajet vide
@@ -80,4 +80,4 @@ Trajet::Trajet()
 #ifdef MAP
 	cout << "Appel au constructeur de <Trajet>" << endl;
 #endif
-} //----- Fin de Ensemble
+} //----- Fin de Trajet
