@@ -25,6 +25,19 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
+void Affiche( )
+// Algorithme : Affiche les trajets du catalogue dans le terminal
+//
+{
+	for(int i = 0 ; i < trajets->taille ; i++){
+		trajets->tableau[i].Affiche();
+		cout << "" << endl
+	}
+}
+// ----- Fin de Affichage
+
+//----------------------------------------------------- Méthodes privés
+
 void Reallocation( Liste* liste )
 // Algorithme : Réalloue un espace plus grand pour le tableau de trajets
 //
