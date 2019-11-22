@@ -31,14 +31,9 @@ public:
 	//----------------------------------------------------- Méthodes publiques
 	char* GetVilleDepart();
 	char* GetVilleArrivee();
+	const void Affiche();
 
 	//------------------------------------------------- Surcharge d'opérateurs
-	TrajetSimple& operator = (const TrajetSimple& unTrajetSimple);
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
-
 
 //-------------------------------------------- Constructeurs - destructeur
 	TrajetSimple(const char* villeDepart, const char* villeArrivee, const char* transport);

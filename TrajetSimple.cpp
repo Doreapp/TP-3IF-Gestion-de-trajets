@@ -38,14 +38,15 @@ char* TrajetSimple::GetVilleArrivee()
 	return villeArrivee;
 } //----- Fin de GetVilleDepart
 
+const void TrajetSimple::Affiche()
+// Algorithme :
+// Trajet de ... à .... en ...
+{
+	cout << "Trajet de " << villeDepart << " a " << villeArrivee << " en " << transport;
+}
+
 
 //------------------------------------------------- Surcharge d'opérateurs
-TrajetSimple& TrajetSimple::operator = (const TrajetSimple& unTrajetSimple)
-// Algorithme :
-//
-{
-} //----- Fin de operator =
-
 
 //-------------------------------------------- Constructeurs - destructeur
 

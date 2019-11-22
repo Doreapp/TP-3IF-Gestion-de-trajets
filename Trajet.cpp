@@ -30,12 +30,6 @@ using namespace std;
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-Trajet& Trajet::operator = (const Trajet& unEnsemble)
-// Algorithme :
-//
-{
-} //----- Fin de operator =
-
 
 //-------------------------------------------- Constructeurs - destructeur
 // PAS DE CONSTUCTEUR PUBLIC
@@ -53,11 +47,4 @@ Trajet::~Trajet()
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
-Trajet::Trajet() 
-// Algorithme :
-// Instancie un trajet vide
-{
-#ifdef MAP
-	cout << "Appel au constructeur de <Trajet>" << endl;
-#endif
-} //----- Fin de Trajet
+
