@@ -17,7 +17,8 @@
 using namespace std;
 
 //------------------------------------------------------------Include personnel
-//#include "catalogue.h"
+#include "Catalogue.h"
+#include "Trajet.h"
 
 //-------------------------------------------------------------------Constantes
 
@@ -35,20 +36,28 @@ int main()
 {
 	char * lecture = new char[100];
 	int val;
-	//Catalogue catalogue = new Catalogue();
+	Catalogue * catalogue = new Catalogue();
 
 	cin >> lecture;
 	while(strcmp(lecture,"Quitter")!=0){
 		if(strcmp(lecture,"Ajout")==0){
+			//cout << "Entrez le nombre d'étapes :";		
 			cout << "AJOUT\n";
 		}else if(strcmp(lecture,"Affichage")==0){
+			//catalogue->Affiche();
 			cout << "Affichage\n";
 		}else if(strcmp(lecture,"Recherche")==0){
-			cout << "Recherche\n";
+			char * ville_depart = new char[100];
+			cout << "Entrez votre ville de départ";
+			cin >> ville_depart;
+			cout << "Entrez votre ville d'arrivé";
+			cin >> lecture;
+			Trajet * recherche = catalogue->TrouveTrajet(ville_depart,lecture);
+			recherche->Affiche();
 		}
 		cin >> lecture;
 	}	
-	//delete(catalogue);
+	delete(catalogue);
 	return 0;
 }
 // ------ Fin de Affichage

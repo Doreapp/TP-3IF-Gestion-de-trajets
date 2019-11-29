@@ -12,7 +12,7 @@
 
 //-------------------------------------------------------- Include système
 #include <iostream>
-#include <cstring>
+#include <ctring>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -25,7 +25,24 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
-void Affiche( )
+void Catalogue::Ajoute(const Trajet* trajet)
+// Algorithme : Ajoute un trajet au catalogue
+//
+{
+	cout << "Le programme ajoute le trajet";
+}
+// ------ Fin de Ajoute
+
+Trajet* TrouveTrajet(const char* depart, const char* arrivee)
+// Algorithme : Trouve les trjats possibles pour aller de la ville de depart jusqu a la ville d arrivee
+//
+{
+	cout << "Le programme trouve les trajets";
+
+}
+// ----- Fin de trouve trajet
+
+void Catalogue::Affiche( )
 // Algorithme : Affiche les trajets du catalogue dans le terminal
 //
 {
@@ -38,12 +55,12 @@ void Affiche( )
 
 //----------------------------------------------------- Méthodes privés
 
-void Reallocation( Liste* liste )
+void Catalogue::Reallocation( Liste* liste )
 // Algorithme : Réalloue un espace plus grand pour le tableau de trajets
 //
 {
 	trajets->allocation+=10;
-	tab* = new Trajet[trajets->allocation];
+	Trajet * tab = new Trajet[trajets->allocation];
 	for(int i = 0 ; i < trajets->taille ; i++){
 		tab[i] = trajets->tableau[i];
 	}
