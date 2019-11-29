@@ -39,14 +39,14 @@ class TrajetListe
 
 public:
 	//----------------------------------------------------- Méthodes publiques
-		const Trajet* Suivant();
+		const Trajet* Suivant() const;
 		// Mode d'emploi : 
 		// A utiliser pour un foreach
 		// Retourne le trajet suivant
 		// Contrat :
 		//
 
-		const Trajet* Premier();
+		const Trajet* Premier() const;
 		// Mode d'emploi :
 		// Retourne le premier trajet
 		// Et initialise un foreach
@@ -65,7 +65,7 @@ public:
 		// Contrat :
 		//
 
-		int Vide();
+		int Vide() const;
 		// Mode d'emploi :
 		// Retourne 1 (true) si la liste est vide, 0 (false) sinon
 		// Contrat :

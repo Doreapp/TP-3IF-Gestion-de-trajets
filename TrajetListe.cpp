@@ -26,8 +26,10 @@ using namespace std;
 
 void TrajetListe::Ajouter(const Trajet* trajet)
 // Algorithme :
-// 
+// Si la liste est vide, on ajoute le trajet en tant que premier et dernier
+// Sinon ajoute le trajet en dernière position
 {
+	//Liste vide ?
 	if (premier == nullptr) {
 		premier = new Element();
 		premier->contenu = trajet;
@@ -36,17 +38,19 @@ void TrajetListe::Ajouter(const Trajet* trajet)
 		return;
 	}
 
+	//Nouvel élément contenant le trajet
 	Element* nouveau = new Element();
 	nouveau->contenu = trajet;
 	nouveau->suivant = nullptr;
 
+	//Modification du dernier
 	dernier->suivant = nouveau;
 	dernier = nouveau;
 } //----- Fin de Ajouter
 
-const Trajet* TrajetListe::Suivant()
-// // Algorithme :
-//
+const Trajet* TrajetListe::Suivant() const
+// Algorithme :
+// retourne l'élément suivant du foreach (null si on a atteint la fin)
 {
 	if (foreachIndex == -1)
 		return Premier();
@@ -64,7 +68,10 @@ const Trajet* TrajetListe::Suivant()
 }
 //----- Fin de Suivant
 
-const Trajet* TrajetListe::Premier() {
+const Trajet* TrajetListe::Premier() const
+// Algorithme :
+// retourne le premier trajet et initialise foreachElement et foreachIndex
+{
 	if (premier == nullptr) {
 		foreachElement = nullptr;
 		foreachIndex = -1;
@@ -74,25 +81,22 @@ const Trajet* TrajetListe::Premier() {
 	foreachIndex = 0;
 	return premier->contenu;
 }
-// Mode d'emploi :
-//
-// Contrat :
-//
 
-const Trajet* TrajetListe::Dernier() {
+
+const Trajet* TrajetListe::Dernier()  const
+// Algorithme :
+// Retourne le dernier trajet 
+{
 	if (dernier == nullptr) {
 		return nullptr;
 	}
 	return dernier->contenu;
 }
-// Mode d'emploi :
-//
-// Contrat :
-//
 
-int TrajetListe::Vide()
+
+int TrajetListe::Vide() const
 // Algorithme :
-// 
+// Retourne si la liste est vide, cad si il n'y a pas de premier élément
 {
 	return premier == nullptr;
 } //----- Fin de Vide
@@ -100,11 +104,10 @@ int TrajetListe::Vide()
 
 //------------------------------------------------- Surcharge d'opérateurs
 
-
 //-------------------------------------------- Constructeurs - destructeur
 TrajetListe::TrajetListe()
 // Algorithme :
-//
+// Constructeur vide
 {
 #ifdef MAP
 	cout << "Appel au constructeur de <TrajetListe>" << endl;
@@ -114,7 +117,7 @@ TrajetListe::TrajetListe()
 
 TrajetListe::~TrajetListe()
 // Algorithme :
-//
+// Detruit chaque élément de la liste
 {
 #ifdef MAP
 	cout << "Appel au destructeur de <EnTrajetListesemble>" << endl;
@@ -129,10 +132,6 @@ TrajetListe::~TrajetListe()
 	foreachElement = nullptr;
 	foreachIndex = -1;
 } //----- Fin de ~TrajetListe
-
-
-
-
 
 //------------------------------------------------------------------ PRIVE
 
