@@ -24,7 +24,7 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 
 
-void TrajetListe::Ajouter(Trajet* trajet)
+void TrajetListe::Ajouter(const Trajet* trajet)
 // Algorithme :
 // 
 {
@@ -44,7 +44,7 @@ void TrajetListe::Ajouter(Trajet* trajet)
 	dernier = nouveau;
 } //----- Fin de Ajouter
 
-Trajet* TrajetListe::Suivant()
+const Trajet* TrajetListe::Suivant()
 // // Algorithme :
 //
 {
@@ -64,7 +64,7 @@ Trajet* TrajetListe::Suivant()
 }
 //----- Fin de Suivant
 
-Trajet* TrajetListe::Premier() {
+const Trajet* TrajetListe::Premier() {
 	if (premier == nullptr) {
 		foreachElement = nullptr;
 		foreachIndex = -1;
@@ -79,7 +79,7 @@ Trajet* TrajetListe::Premier() {
 // Contrat :
 //
 
-Trajet* TrajetListe::Dernier() {
+const Trajet* TrajetListe::Dernier() {
 	if (dernier == nullptr) {
 		return nullptr;
 	}

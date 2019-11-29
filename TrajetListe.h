@@ -19,13 +19,15 @@
 
 //------------------------------------------------------------------------
 // Rôle de la classe <TrajetListe>
-//
-//
+//Trajet liste représente une liste de trajets
+//Dans celle ci il est facile de récupérer le premier élément ainsi que le dernier
+//Les "for each" sont également facilités par des méthode (Premier et Suivant)
 //------------------------------------------------------------------------
 
+//Structure réprésentant un élément de la liste
 typedef struct structElement {
 	//Contenu de l'element : un trajet
-	Trajet* contenu;
+	const Trajet* contenu;
 
 	//Element suivant 
 	struct structElement* suivant;
@@ -37,39 +39,35 @@ class TrajetListe
 
 public:
 	//----------------------------------------------------- Méthodes publiques
-		//Trajet* Recuperer(int index);
-		// Mode d'emploi :
-		//
+		const Trajet* Suivant();
+		// Mode d'emploi : 
+		// A utiliser pour un foreach
+		// Retourne le trajet suivant
 		// Contrat :
 		//
 
-		Trajet* Suivant();
+		const Trajet* Premier();
 		// Mode d'emploi :
-		//
+		// Retourne le premier trajet
+		// Et initialise un foreach
 		// Contrat :
 		//
 
-		Trajet* Premier();
+		const Trajet* Dernier();
 		// Mode d'emploi :
-		//
+		// Retourne le dernier trajet
 		// Contrat :
 		//
 
-		Trajet* Dernier();
+		void Ajouter(const Trajet* trajet);
 		// Mode d'emploi :
-		//
-		// Contrat :
-		//
-
-		void Ajouter(Trajet* trajet);
-		// Mode d'emploi :
-		//
+		// Ajoute un trajet dans la liste, en dernière position
 		// Contrat :
 		//
 
 		int Vide();
 		// Mode d'emploi :
-		//
+		// Retourne 1 (true) si la liste est vide, 0 (false) sinon
 		// Contrat :
 		//
 
@@ -80,13 +78,13 @@ public:
 //-------------------------------------------- Constructeurs - destructeur
 	TrajetListe();
 	// Mode d'emploi :
-	//
+	// Constructeur simple d'une liste vide
 	// Contrat :
 	//
 
 	virtual ~TrajetListe();
 	// Mode d'emploi :
-	//
+	// Supprime la liste et chacun de ses éléments
 	// Contrat :
 	//
 
@@ -101,9 +99,15 @@ private:
 	//----------------------------------------------------- Méthodes privée
 
 	//----------------------------------------------------- Attributs privée
+	//Premier élément de la liste (si vide nullptr)
 	Element* premier = nullptr;
+	//Dernier élément de la liste (si vide nullptr)
 	Element* dernier = nullptr;
+	
+	//Variables utilisées pour le foreach
+	//indice de l'élément retourné par 'suivant'
 	int foreachIndex = -1;
+	//élément retourné par 'suivant'
 	Element* foreachElement = nullptr;
 
 };
