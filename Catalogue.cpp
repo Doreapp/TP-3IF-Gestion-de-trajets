@@ -1,16 +1,16 @@
 /*************************************************************************
 						   Catalogue  -  description
 							 -------------------
-	début                : 22/11/2019
-	copyright            : (C) 2019-2020 par CARREAU Damien
-	e-mail               : carreau.damien@gmail.com
+	dÃ©but                : 22/11/2019
+	copyright            : (C) 2019/2020 par Carreau Damien et Mandin Antoine
+	e-mail               : antoine.mandin@insa-lyon.fr / damien.carreau@insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <Catalogue> (fichier Catalogue.cpp) ------------
+//---------- RÃ©alisation de la classe <Catalogue> (fichier Catalogue.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include système
+//-------------------------------------------------------- Include systÃ¨me
 #include <iostream>
 #include <cstring>
 using namespace std;
@@ -23,7 +23,7 @@ using namespace std;
 
 //----------------------------------------------------------------- PUBLIC
 
-//----------------------------------------------------- Méthodes publiques
+//----------------------------------------------------- MÃ©thodes publiques
 
 void Catalogue::Ajoute(const Trajet* trajet)
 // Algorithme : Ajoute un trajet au catalogue
@@ -75,7 +75,7 @@ const void Catalogue::Affiche() const
 }
 // ----- Fin de Affichage
 
-//----------------------------------------------------- Méthodes privés
+//----------------------------------------------------- MÃ©thodes privÃ©s
 
 //-------------------------------------------- Constructeurs - destructeur;
 
@@ -105,4 +105,4 @@ Catalogue::~Catalogue()
 
 //------------------------------------------------------------------ PRIVE
 
-//----------------------------------------------------- Méthodes protégées
+//----------------------------------------------------- MÃ©thodes protÃ©gÃ©es
