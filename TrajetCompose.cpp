@@ -24,7 +24,7 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
-char* TrajetCompose::GetVilleDepart()
+char* TrajetCompose::GetVilleDepart() const
 // Algorithme :
 // Retourne la ville de départ du trajet (donc celle du premier trajet)
 // Retourne null si le trajet est vide
@@ -32,10 +32,11 @@ char* TrajetCompose::GetVilleDepart()
 	if (liste->Vide())
 		return nullptr;
 
-	return liste->Premier()->GetVilleDepart();
+	const Trajet* el = liste->Premier();
+	return el->GetVilleDepart();
 } //----- Fin de GetVilleDepart
 
-char* TrajetCompose::GetVilleArrivee()
+char* TrajetCompose::GetVilleArrivee() const
 // Algorithme :
 // Retourne la ville d'arrivée du trajet (donc celle du dernier trajet)
 // Retourne null si le trajet est vide
@@ -46,7 +47,7 @@ char* TrajetCompose::GetVilleArrivee()
 	return liste->Dernier()->GetVilleDepart();
 } //----- Fin de GetVilleArrivee
 
-const void TrajetCompose::Affiche() 
+const void TrajetCompose::Affiche() const
 // Algorithme :
 // Affiche chaque trajet interne séparés par des -
 {
@@ -55,7 +56,7 @@ const void TrajetCompose::Affiche()
 		return;
 	}
 
-	Trajet* curr = liste->Premier();
+	const Trajet* curr = liste->Premier();
 	while (curr != nullptr) {
 		curr->Affiche();
 

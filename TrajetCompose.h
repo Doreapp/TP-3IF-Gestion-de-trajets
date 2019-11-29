@@ -30,9 +30,9 @@ class TrajetCompose : public Trajet
 
 public:
 	//----------------------------------------------------- Méthodes publiques
-	char* GetVilleDepart();
-	char* GetVilleArrivee();
-	const void Affiche();
+	char* GetVilleDepart() const;
+	char* GetVilleArrivee() const;
+	const void Affiche() const;
 
 	void Ajoute(Trajet* trajet);
 		// Mode d'emploi :

@@ -1,96 +1,83 @@
 /*************************************************************************
-                           Catalogue  -  description
-                             -------------------
-    d√©but                : 22/11/2019
-    copyright            : (C) 2019-2020 par CARREAU Damien
-    e-mail               : carreau.damien@gmail.com
+						   Catalogue  -  description
+							 -------------------
+	dÈbut                : 22/11/2019
+	copyright            : (C) 2019-2020 par CARREAU Damien
+	e-mail               : carreau.damien@gmail.com
 *************************************************************************/
 
 //---------- Interface de la classe <Catalogue> (fichier Catalogue.h) ----------------
 #if ! defined ( CATALOGUE_H )
 #define CATALOGUE_H
 
-//--------------------------------------------------- Interfaces utilis√©es
+//--------------------------------------------------- Interfaces utilisÈes
+#include "TrajetListe.h"
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// R√¥le de la classe <Catalogue>
-// R√©p√©rtorie tous les trajets possibles
+// RÙle de la classe <Catalogue>
+// RÈpÈrtorie tous les trajets possibles
 //
 //------------------------------------------------------------------------
 
-typedef struct sListe{
-	Trajet* tableau;
-	int allocation;
-	int taille;
-} Liste;
-
-class Catalogue 
+class Catalogue
 {
-//----------------------------------------------------------------- PUBLIC
+	//----------------------------------------------------------------- PUBLIC
 
 public:
-//----------------------------------------------------- M√©thodes publiques
+	//----------------------------------------------------- MÈthodes publiques
 
-	void Affiche();
-    	// Mode d'emploi :
-    	//Affiche le catalogue sur le terminal
+	const void Affiche() const;
+	// Mode d'emploi :
+	//Affiche le catalogue sur le terminal
 	//
-    	// Contrat :
-    	//
-    
+	// Contrat :
+	//
+
 	void Ajoute(const Trajet* trajet);
-    	// Mode d'emploi :
-    	// Ajoute un trajet au catalogue (√† la liste)
+	// Mode d'emploi :
+	// Ajoute un trajet au catalogue (‡ la liste)
+//
+	// Contrat :
 	//
-    	// Contrat :
-    	//
 
-	Trajet* TrouveTrajet(const char* depart,const char* arrivee);
-    	// Mode d'emploi :
-    	// Effectue une recherche des trajets d'une ville depart vers une autre arrivee et renvoi un tableau avec tout les trajets trouv√©s (dans le catalogue)
+	Trajet* TrouveTrajet(const char* depart, const char* arrivee) const;
+	// Mode d'emploi :
+	// Effectue une recherche des trajets d'une ville depart vers une autre arrivee et renvoi un tableau avec tout les trajets trouvÈs (dans le catalogue)
+//
+	// Contrat :
 	//
-    	// Contrat :
-    	//
-	
+
 //-------------------------------------------- Constructeurs - destructeur
-    
-    Catalogue ( );
-    // Mode d'emploi :
-    // Instancie un catalogue (alloue l'espace m√©moire pour la liste)
-    //
-    // Contrat :
-    //
 
-    virtual ~Catalogue ( );
-    // Mode d'emploi :
-    // Lib√®re l'espace m√©moire utiliser par le catalogue
-    //
-    // Contrat :
-    //
+	Catalogue();
+	// Mode d'emploi :
+	// Instancie un catalogue (alloue l'espace mÈmoire pour la liste)
+	//
+	// Contrat :
+	//
+
+	virtual ~Catalogue();
+	// Mode d'emploi :
+	// LibËre l'espace mÈmoire utiliser par le catalogue
+	//
+	// Contrat :
+	//
 
 //------------------------------------------------------------------ PRIVE
 
 private:
-//----------------------------------------------------- M√©thodes prot√©g√©es
-	
-    	void Reallocation(Liste* liste);
-	// type M√©thode ( liste des param√®tres );
-    	// Mode d'emploi :
-    	//
-    	// Contrat :
-    	//
+	//----------------------------------------------------- MÈthodes protÈgÈes
 
-//----------------------------------------------------- Attributs prot√©g√©s
 
-	Liste* trajets;
+//----------------------------------------------------- Attributs protÈgÈs
+
+	TrajetListe* trajets;
 	// Enregistre tous les trajets du catalogue
-	
+
 };
 
 #endif // CATALOGUE_H
-
-

@@ -1,18 +1,17 @@
 /*************************************************************************
-                           Catalogue  -  description
-                             -------------------
-    dÃ©but                : 22/11/2019
-    copyright            : (C) 2019-2020 par CARREAU Damien
-    e-mail               : carreau.damien@gmail.com
+						   Catalogue  -  description
+							 -------------------
+	début                : 22/11/2019
+	copyright            : (C) 2019-2020 par CARREAU Damien
+	e-mail               : carreau.damien@gmail.com
 *************************************************************************/
 
-//---------- RÃ©alisation de la classe <Catalogue> (fichier Catalogue.cpp) ------------
+//---------- Réalisation de la classe <Catalogue> (fichier Catalogue.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include systÃ¨me
+//-------------------------------------------------------- Include système
 #include <iostream>
-#include <ctring>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -23,17 +22,17 @@ using namespace std;
 
 //----------------------------------------------------------------- PUBLIC
 
-//----------------------------------------------------- MÃ©thodes publiques
+//----------------------------------------------------- Méthodes publiques
 
 void Catalogue::Ajoute(const Trajet* trajet)
 // Algorithme : Ajoute un trajet au catalogue
 //
 {
-	cout << "Le programme ajoute le trajet";
+	trajets->Ajouter(trajet);
 }
 // ------ Fin de Ajoute
 
-Trajet* TrouveTrajet(const char* depart, const char* arrivee)
+Trajet* Catalogue::TrouveTrajet(const char* depart, const char* arrivee) const
 // Algorithme : Trouve les trjats possibles pour aller de la ville de depart jusqu a la ville d arrivee
 //
 {
@@ -42,65 +41,57 @@ Trajet* TrouveTrajet(const char* depart, const char* arrivee)
 }
 // ----- Fin de trouve trajet
 
-void Catalogue::Affiche( )
+const void Catalogue::Affiche() const
 // Algorithme : Affiche les trajets du catalogue dans le terminal
 //
 {
-	for(int i = 0 ; i < trajets->taille ; i++){
-		trajets->tableau[i].Affiche();
-		cout << "" << endl
+	if (trajets->Vide()) {
+		cout << "Catalogue vide";
+		return;
+	}
+
+	const Trajet* curr = trajets->Premier();
+	int i = 1;
+	while (curr != nullptr) {
+		cout << i << " : ";
+		curr->Affiche();
+		i++;
+
+		curr = trajets->Suivant();
+		if (curr != nullptr)
+			cout << endl;
 	}
 }
 // ----- Fin de Affichage
 
-//----------------------------------------------------- MÃ©thodes privÃ©s
-
-void Catalogue::Reallocation( Liste* liste )
-// Algorithme : RÃ©alloue un espace plus grand pour le tableau de trajets
-//
-{
-	trajets->allocation+=10;
-	Trajet * tab = new Trajet[trajets->allocation];
-	for(int i = 0 ; i < trajets->taille ; i++){
-		tab[i] = trajets->tableau[i];
-	}
-	delete trajets->tableau;
-	trajets->tableau = tab;
-} //----- Fin de Reallocation
+//----------------------------------------------------- Méthodes privés
 
 //-------------------------------------------- Constructeurs - destructeur;
 
-Catalogue::Catalogue ( )
+Catalogue::Catalogue()
 // Algorithme :
 //
 {
-	#ifdef MAP
-    		cout << "Appel au constructeur de <Catalogue>" << endl;
-	#endif
-	
-	trajets->allocation = 10;
-	trajets->taille = 0;
-	trajets->tableau = new Trajet[trajets->allocation];
+#ifdef MAP
+	cout << "Appel au constructeur de <Catalogue>" << endl;
+#endif
+
+	trajets = new TrajetListe();
 } //----- Fin de Catalogue
 
 
-Catalogue::~Catalogue ( )
+Catalogue::~Catalogue()
 // Algorithme :
 //
 {
-	#ifdef MAP
-    		cout << "Appel au destructeur de <Catalogue>" << endl;
-	#endif
+#ifdef MAP
+	cout << "Appel au destructeur de <Catalogue>" << endl;
+#endif
 
-	for(int i = 0; i < trajets->taille ; i++ ){
-		delete trajets->tableau[i];
-	}
-	delete[] trajets->tableau;
 	delete trajets;
 } //----- Fin de ~Catalogue
 
 
 //------------------------------------------------------------------ PRIVE
 
-//----------------------------------------------------- MÃ©thodes protÃ©gÃ©es
-
+//----------------------------------------------------- Méthodes protégées

@@ -24,21 +24,21 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-char* TrajetSimple::GetVilleDepart()
+char* TrajetSimple::GetVilleDepart() const
 // Algorithme :
 //
 {
 	return villeDepart;
 } //----- Fin de GetVilleDepart
 
-char* TrajetSimple::GetVilleArrivee()
+char* TrajetSimple::GetVilleArrivee() const
 // Algorithme :
 //
 {
 	return villeArrivee;
 } //----- Fin de GetVilleDepart
 
-const void TrajetSimple::Affiche()
+const void TrajetSimple::Affiche() const
 // Algorithme :
 // Trajet de ... à .... en ...
 {

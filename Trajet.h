@@ -28,21 +28,21 @@ class Trajet
 
 public:
 	//----------------------------------------------------- Méthodes publiques
-	virtual char* GetVilleDepart() = 0;
+	virtual char* GetVilleDepart() const = 0;
 	// Mode d'emploi :
 	// Retourne la ville de départ du trajet sous forme de tableau de caractère
 	// Retourne NULL si méthode non surchargée (implémentée par une classe enfant)
 	// Contrat : 
 	// 
 
-	virtual char* GetVilleArrivee() = 0;
+	virtual char* GetVilleArrivee() const = 0;
 	// Mode d'emploi :
 	// Retourne la ville d'arrivée du trajet sous forme de tableau de caractère
 	// Retourne NULL si méthode non surchargée (implémentée par une classe enfant)
 	// Contrat : 
 	// 
 
-	virtual const void Affiche() = 0;
+	virtual const void Affiche() const = 0;
 	// Mode d'emploi :
 	// Affiche le trajet 
 	// Affiche '{Non implémentée}' si méthode non surchargée (implémentée par une classe enfant)
