@@ -1,16 +1,16 @@
 /*************************************************************************
 						   Catalogue  -  description
 							 -------------------
-	dÃ©but                : 22/11/2019
-	copyright            : (C) 2019/2020 par Carreau Damien et Mandin Antoine
-	e-mail               : antoine.mandin@insa-lyon.fr / damien.carreau@insa-lyon.fr
+	début                : 22/11/2019
+	copyright            : (C) 2019-2020 par CARREAU Damien
+	e-mail               : carreau.damien@gmail.com
 *************************************************************************/
 
-//---------- RÃ©alisation de la classe <Catalogue> (fichier Catalogue.cpp) ------------
+//---------- Réalisation de la classe <Catalogue> (fichier Catalogue.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include systÃ¨me
+//-------------------------------------------------------- Include système
 #include <iostream>
 #include <cstring>
 using namespace std;
@@ -23,7 +23,7 @@ using namespace std;
 
 //----------------------------------------------------------------- PUBLIC
 
-//----------------------------------------------------- MÃ©thodes publiques
+//----------------------------------------------------- Méthodes publiques
 
 void Catalogue::Ajoute(const Trajet* trajet)
 // Algorithme : Ajoute un trajet au catalogue
@@ -49,6 +49,9 @@ const Trajet* Catalogue::TrouveTrajet(const char* depart, const char* arrivee) c
 
 		curr = trajets->Suivant();
 	}
+
+	cout << "Trajet non trouvé";
+	return nullptr;
 }
 // ----- Fin de trouve trajet
 
@@ -69,13 +72,12 @@ const void Catalogue::Affiche() const
 		i++;
 
 		curr = trajets->Suivant();
-		if (curr != nullptr)
-			cout << endl;
+		cout << endl;
 	}
 }
 // ----- Fin de Affichage
 
-//----------------------------------------------------- MÃ©thodes privÃ©s
+//----------------------------------------------------- Méthodes privés
 
 //-------------------------------------------- Constructeurs - destructeur;
 
@@ -105,4 +107,4 @@ Catalogue::~Catalogue()
 
 //------------------------------------------------------------------ PRIVE
 
-//----------------------------------------------------- MÃ©thodes protÃ©gÃ©es
+//----------------------------------------------------- Méthodes protégées
