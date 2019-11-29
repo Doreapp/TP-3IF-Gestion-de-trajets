@@ -6,37 +6,70 @@
 	e-mail               : antoine.mandin@insa-lyon.fr / damien.carreau@insa-lyon.fr
 *************************************************************************/
 
-//---------- Interface de la classe <TrajetCompose> (fichier TrajetCompose.h) ----------------
-#if ! defined ( TRAJET_COMPOSE_H )
-#define TRAJET_COMPOSE_H
+//---------- Interface de la classe <TrajetListe> (fichier TrajetListe.h) ----------------
+#if ! defined ( ENSEMBLE_H )
+#define ENSEMBLE_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Trajet.h"
-#include "TrajetListe.h"
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <TrajetCompose>
+// Rôle de la classe <TrajetListe>
 //
 //
 //------------------------------------------------------------------------
 
-class TrajetCompose : public Trajet
+typedef struct structElement {
+	//Contenu de l'element : un trajet
+	Trajet* contenu;
+
+	//Element suivant 
+	struct structElement* suivant;
+} Element;
+
+class TrajetListe
 {
 	//----------------------------------------------------------------- PUBLIC
 
 public:
 	//----------------------------------------------------- Méthodes publiques
-	char* GetVilleDepart();
-	char* GetVilleArrivee();
-	const void Affiche();
-
-	void Ajoute(Trajet* trajet);
+		//Trajet* Recuperer(int index);
 		// Mode d'emploi :
-		// Ajoute le trajet à la liste des trajets 
+		//
+		// Contrat :
+		//
+
+		Trajet* Suivant();
+		// Mode d'emploi :
+		//
+		// Contrat :
+		//
+
+		Trajet* Premier();
+		// Mode d'emploi :
+		//
+		// Contrat :
+		//
+
+		Trajet* Dernier();
+		// Mode d'emploi :
+		//
+		// Contrat :
+		//
+
+		void Ajouter(Trajet* trajet);
+		// Mode d'emploi :
+		//
+		// Contrat :
+		//
+
+		int Vide();
+		// Mode d'emploi :
+		//
 		// Contrat :
 		//
 
@@ -44,15 +77,14 @@ public:
 	//------------------------------------------------- Surcharge d'opérateurs
 
 
-
 //-------------------------------------------- Constructeurs - destructeur
-	TrajetCompose();
+	TrajetListe();
 	// Mode d'emploi :
 	//
 	// Contrat :
 	//
 
-	virtual ~TrajetCompose();
+	virtual ~TrajetListe();
 	// Mode d'emploi :
 	//
 	// Contrat :
@@ -66,14 +98,18 @@ protected:
 	//----------------------------------------------------- Attributs protégés
 
 private:
-	//----------------------------------------------------- Méthodes privées
+	//----------------------------------------------------- Méthodes privée
 
-	//----------------------------------------------------- Attributs privés
-	TrajetListe* liste;
+	//----------------------------------------------------- Attributs privée
+	Element* premier = nullptr;
+	Element* dernier = nullptr;
+	int foreachIndex = -1;
+	Element* foreachElement = nullptr;
+
 };
 
 //-------------------------------- Autres définitions dépendantes de <Ensemble>
 
-
 #endif // ENSEMBLE_H
+
 
