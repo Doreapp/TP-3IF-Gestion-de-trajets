@@ -1,5 +1,5 @@
 /*************************************************************************
-						   Trajet Composé  -  Implémentation d'un trajet simple entre 2 villes
+						   Trajet Liste  -  Liste de trajets
 							 -------------------
 	début                : 22/11/2019 - /
 	copyright            : (C) 2019/2020 par Carreau Damien et Mandin Antoine
@@ -22,7 +22,6 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-
 
 void TrajetListe::Ajouter(const Trajet* trajet)
 // Algorithme :
@@ -59,7 +58,10 @@ const Trajet* TrajetListe::Premier() const
 	return nullptr;
 }
 
-Element* TrajetListe::PremierElement() const {
+Element* TrajetListe::PremierElement() const 
+// Algorithme :
+// get basique
+{
 	return premier;
 }
 
@@ -73,7 +75,6 @@ const Trajet* TrajetListe::Dernier()  const
 	return dernier->contenu;
 	return nullptr;
 }
-
 
 int TrajetListe::Vide() const
 // Algorithme :
@@ -100,7 +101,7 @@ TrajetListe::~TrajetListe()
 // Detruit chaque élément de la liste
 {
 #ifdef MAP
-	cout << "Appel au destructeur de <EnTrajetListesemble>" << endl;
+	cout << "Appel au destructeur de <EnTrajetListe>" << endl;
 #endif
 	for (Element* curr = premier; curr != nullptr; curr = premier) {
 		premier = curr->suivant;

@@ -2,8 +2,8 @@
 						   Catalogue  -  description
 							 -------------------
 	début                : 22/11/2019
-	copyright            : (C) 2019-2020 par CARREAU Damien
-	e-mail               : carreau.damien@gmail.com
+	copyright            : (C) 2019-2020 par CARREAU Damien et MANDIN Antoine
+	e-mail               : carreau.damien@gmail.com | antoine.mandin@insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <Catalogue> (fichier Catalogue.h) ----------------
@@ -32,7 +32,7 @@ public:
 
 	const void Affiche() const;
 	// Mode d'emploi :
-	//Affiche le catalogue sur le terminal
+	// Affiche le catalogue sur le terminal
 	//
 	// Contrat :
 	//
@@ -40,14 +40,14 @@ public:
 	void Ajoute(const Trajet* trajet);
 	// Mode d'emploi :
 	// Ajoute un trajet au catalogue (à la liste)
-//
+	//
 	// Contrat :
 	//
 
 	const TrajetListe* TrouveTrajet(const char* depart, const char* arrivee) const;
 	// Mode d'emploi :
 	// Effectue une recherche des trajets d'une ville depart vers une autre arrivee et renvoi un tableau avec tout les trajets trouvés (dans le catalogue)
-//
+	//
 	// Contrat :
 	//
 

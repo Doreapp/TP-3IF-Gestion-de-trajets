@@ -29,6 +29,7 @@ class TrajetSimple : public Trajet
 
 public:
 	//----------------------------------------------------- Méthodes publiques
+	//----------------------------------------------------Méthodes surchargées
 	char* GetVilleDepart() const;
 	char* GetVilleArrivee() const;
 	const void Affiche() const;

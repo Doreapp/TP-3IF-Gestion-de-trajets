@@ -2,8 +2,8 @@
 						   Catalogue  -  description
 							 -------------------
 	début                : 22/11/2019
-	copyright            : (C) 2019-2020 par CARREAU Damien
-	e-mail               : carreau.damien@gmail.com
+	copyright            : (C) 2019-2020 par CARREAU Damien et MANDIN Antoine
+	e-mail               : carreau.damien@gmail.com | antoine.mandin@insa-lyon.fr
 *************************************************************************/
 
 //---------- Réalisation de la classe <Catalogue> (fichier Catalogue.cpp) ------------
@@ -26,16 +26,16 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 
 void Catalogue::Ajoute(const Trajet* trajet)
-// Algorithme : Ajoute un trajet au catalogue
-//
+// Algorithme : 
+// Ajoute un trajet au catalogue
 {
 	trajets->Ajouter(trajet);
 }
 // ------ Fin de Ajoute
 
 const TrajetListe* Catalogue::TrouveTrajet(const char* depart, const char* arrivee) const
-// Algorithme : Trouve les trjats possibles pour aller de la ville de depart jusqu a la ville d arrivee
-//
+// Algorithme : 
+// Trouve les trajets possibles pour aller de la ville de depart jusqu a la ville d'arrivée
 {
 	TrajetListe* res = new TrajetListe();
 
@@ -85,7 +85,7 @@ const void Catalogue::Affiche() const
 
 Catalogue::Catalogue()
 // Algorithme :
-//
+// Initialise trajets
 {
 #ifdef MAP
 	cout << "Appel au constructeur de <Catalogue>" << endl;
@@ -97,7 +97,7 @@ Catalogue::Catalogue()
 
 Catalogue::~Catalogue()
 // Algorithme :
-//
+// Delete trajets
 {
 #ifdef MAP
 	cout << "Appel au destructeur de <Catalogue>" << endl;

@@ -26,30 +26,28 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 char* TrajetSimple::GetVilleDepart() const
 // Algorithme :
-//
+// get basique
 {
 	return villeDepart;
 } //----- Fin de GetVilleDepart
 
 char* TrajetSimple::GetVilleArrivee() const
 // Algorithme :
-//
+// get basique
 {
 	return villeArrivee;
 } //----- Fin de GetVilleDepart
 
 const void TrajetSimple::Affiche() const
 // Algorithme :
-// Trajet de ... à .... en ...
+// "Trajet de ... à .... en ..."
 {
 	cout << "Trajet de " << villeDepart << " a " << villeArrivee << " en " << transport;
 }
 
-
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-
 
 TrajetSimple::TrajetSimple(const char* villeDepart, const char* villeArrivee, const char* transport) 
 // Algorithme :
@@ -67,7 +65,6 @@ TrajetSimple::TrajetSimple(const char* villeDepart, const char* villeArrivee, co
 	strcpy(this->transport, transport);
 } //----- Fin de Ensemble
 
-
 TrajetSimple::~TrajetSimple()
 // Algorithme :
 // Libère les différentes variable mémoire (3 char* ici)
@@ -80,7 +77,6 @@ TrajetSimple::~TrajetSimple()
 	delete[] villeDepart;
 	delete[] transport;
 } //----- Fin de ~TrajetSimple
-
 
 //------------------------------------------------------------------ PRIVE
 

@@ -20,8 +20,8 @@
 
 //------------------------------------------------------------------------
 // Rôle de la classe <TrajetCompose>
-//
-//
+// Représente un trajet composé de plusieurs trajets 
+// 
 //------------------------------------------------------------------------
 
 class TrajetCompose : public Trajet
@@ -43,18 +43,16 @@ public:
 
 	//------------------------------------------------- Surcharge d'opérateurs
 
-
-
 //-------------------------------------------- Constructeurs - destructeur
 	TrajetCompose();
 	// Mode d'emploi :
-	//
+	// Constructeur vide
 	// Contrat :
 	//
 
 	virtual ~TrajetCompose();
 	// Mode d'emploi :
-	//
+	// delete les trajets internes
 	// Contrat :
 	//
 
@@ -70,10 +68,11 @@ private:
 
 	//----------------------------------------------------- Attributs privés
 	TrajetListe* liste;
+	//liste des trajets internes
 };
 
-//-------------------------------- Autres définitions dépendantes de <Ensemble>
+//-------------------------------- Autres définitions dépendantes de <TrajetCompose>
 
 
-#endif // ENSEMBLE_H
+#endif // TRAJET_COMPOSE_H
 

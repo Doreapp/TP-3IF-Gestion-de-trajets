@@ -22,12 +22,6 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Ensemble::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
-
 
 //------------------------------------------------- Surcharge d'opérateurs
 
@@ -42,7 +36,6 @@ Trajet::~Trajet()
 	cout << "Appel au destructeur de <Trajet>" << endl;
 #endif
 } //----- Fin de ~Ensemble
-
 
 //------------------------------------------------------------------ PRIVE
 

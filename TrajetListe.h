@@ -7,8 +7,8 @@
 *************************************************************************/
 
 //---------- Interface de la classe <TrajetListe> (fichier TrajetListe.h) ----------------
-#if ! defined ( ENSEMBLE_H )
-#define ENSEMBLE_H
+#if ! defined ( TRAJET_LISTE_H )
+#define TRAJET_LISTE_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Trajet.h"
@@ -43,14 +43,12 @@ public:
 		const Trajet* Premier() const;
 		// Mode d'emploi :
 		// Retourne le premier trajet
-		// Et initialise un foreach
 		// Contrat :
 		//
 
 		Element* PremierElement() const;
 		// Mode d'emploi :
-		// Retourne le premier trajet
-		// Et initialise un foreach
+		// Retourne le premier élément de la liste
 		// Contrat :
 		//
 
@@ -107,17 +105,10 @@ private:
 
 	//Premier élément de la liste (si vide nullptr)
 	Element* premier = nullptr;
-	
-	//Variables utilisées pour le foreach
-	//indice de l'élément retourné par 'suivant'
-	//int foreachIndex = -1;
-	//élément retourné par 'suivant'
-	//Element* foreachElement = nullptr;
-
 };
 
-//-------------------------------- Autres définitions dépendantes de <Ensemble>
+//-------------------------------- Autres définitions dépendantes de <TrajetListe>
 
-#endif // ENSEMBLE_H
+#endif // TRAJET_LISTE_H
 
 

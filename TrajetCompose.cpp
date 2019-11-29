@@ -54,7 +54,6 @@ const void TrajetCompose::Affiche() const
 		cout << "{Vide}";
 		return;
 	}
-
 	
 	Element* curr = liste->PremierElement();
 	while (curr != nullptr) {
@@ -90,30 +89,29 @@ void TrajetCompose::Ajoute(Trajet* trajet)
 }//----- Fin de Ajoute
 
 
-
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
 TrajetCompose::TrajetCompose()
 // Algorithme :
-//
+// Initialise liste
 {
 #ifdef MAP
-	cout << "Appel au constructeur de <Ensemble>" << endl;
+	cout << "Appel au constructeur de <TrajetCompose>" << endl;
 #endif
 	liste = new TrajetListe();
-} //----- Fin de Ensemble
+} //----- Fin de TrajetCompose
 
 
 TrajetCompose::~TrajetCompose()
 // Algorithme :
-//
+// Delete liste
 {
 #ifdef MAP
-	cout << "Appel au destructeur de <Ensemble>" << endl;
+	cout << "Appel au destructeur de <TrajetCompose>" << endl;
 #endif
 	delete liste;
-} //----- Fin de ~Ensemble
+} //----- Fin de ~TrajetCompose
 
 
 //------------------------------------------------------------------ PRIVE
