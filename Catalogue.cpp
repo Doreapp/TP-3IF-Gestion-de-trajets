@@ -33,25 +33,27 @@ void Catalogue::Ajoute(const Trajet* trajet)
 }
 // ------ Fin de Ajoute
 
-const Trajet* Catalogue::TrouveTrajet(const char* depart, const char* arrivee) const
+const TrajetListe* Catalogue::TrouveTrajet(const char* depart, const char* arrivee) const
 // Algorithme : Trouve les trjats possibles pour aller de la ville de depart jusqu a la ville d arrivee
 //
 {
+	TrajetListe* res = new TrajetListe();
+
 	if (trajets->Vide()) {
-		cout << "Erreur (TrouveTrajet) : Catalogue vide";
-		return nullptr;
+		cout << "Catalogue vide";
+		return res;
 	}
-
-	const Trajet* curr = trajets->Premier();
+	
+	Element* curr = trajets->PremierElement();
 	while (curr != nullptr) {
-		if (!strcmp(curr->GetVilleDepart(), depart) && !strcmp(curr->GetVilleArrivee(), arrivee))
-			return curr;
+		if (!strcmp(curr->contenu->GetVilleDepart(), depart) && 
+			!strcmp(curr->contenu->GetVilleArrivee(), arrivee))
+			res->Ajouter(curr->contenu);
 
-		curr = trajets->Suivant();
+		curr = curr->suivant;
 	}
 
-	cout << "Trajet non trouvé";
-	return nullptr;
+	return res;
 }
 // ----- Fin de trouve trajet
 
@@ -64,14 +66,14 @@ const void Catalogue::Affiche() const
 		return;
 	}
 
-	const Trajet* curr = trajets->Premier();
+	Element* curr = trajets->PremierElement();
 	int i = 1;
 	while (curr != nullptr) {
 		cout << i << " : ";
-		curr->Affiche();
+		curr->contenu->Affiche();
 		i++;
 
-		curr = trajets->Suivant();
+		curr = curr->suivant;
 		cout << endl;
 	}
 }

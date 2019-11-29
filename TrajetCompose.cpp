@@ -32,8 +32,7 @@ char* TrajetCompose::GetVilleDepart() const
 	if (liste->Vide())
 		return nullptr;
 
-	const Trajet* el = liste->Premier();
-	return el->GetVilleDepart();
+	return liste->Premier()->GetVilleDepart();
 } //----- Fin de GetVilleDepart
 
 char* TrajetCompose::GetVilleArrivee() const
@@ -44,7 +43,7 @@ char* TrajetCompose::GetVilleArrivee() const
 	if (liste->Vide())
 		return nullptr;
 
-	return liste->Dernier()->GetVilleDepart();
+	return liste->Dernier()->GetVilleArrivee();
 } //----- Fin de GetVilleArrivee
 
 const void TrajetCompose::Affiche() const
@@ -56,11 +55,12 @@ const void TrajetCompose::Affiche() const
 		return;
 	}
 
-	const Trajet* curr = liste->Premier();
+	
+	Element* curr = liste->PremierElement();
 	while (curr != nullptr) {
-		curr->Affiche();
+		curr->contenu->Affiche();
 
-		curr = liste->Suivant();
+		curr = curr->suivant;
 		if (curr != nullptr)
 			cout << " - ";
 	}

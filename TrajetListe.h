@@ -39,12 +39,6 @@ class TrajetListe
 
 public:
 	//----------------------------------------------------- Méthodes publiques
-		const Trajet* Suivant() const;
-		// Mode d'emploi : 
-		// A utiliser pour un foreach
-		// Retourne le trajet suivant
-		// Contrat :
-		//
 
 		const Trajet* Premier() const;
 		// Mode d'emploi :
@@ -53,7 +47,14 @@ public:
 		// Contrat :
 		//
 
-		const Trajet* Dernier();
+		Element* PremierElement() const;
+		// Mode d'emploi :
+		// Retourne le premier trajet
+		// Et initialise un foreach
+		// Contrat :
+		//
+
+		const Trajet* Dernier() const;
 		// Mode d'emploi :
 		// Retourne le dernier trajet
 		// Contrat :
@@ -94,21 +95,24 @@ protected:
 	//----------------------------------------------------- Méthodes protégées
 
 	//----------------------------------------------------- Attributs protégés
+	
 
 private:
 	//----------------------------------------------------- Méthodes privée
 
 	//----------------------------------------------------- Attributs privée
-	//Premier élément de la liste (si vide nullptr)
-	Element* premier = nullptr;
+	
 	//Dernier élément de la liste (si vide nullptr)
 	Element* dernier = nullptr;
+
+	//Premier élément de la liste (si vide nullptr)
+	Element* premier = nullptr;
 	
 	//Variables utilisées pour le foreach
 	//indice de l'élément retourné par 'suivant'
-	int foreachIndex = -1;
+	//int foreachIndex = -1;
 	//élément retourné par 'suivant'
-	Element* foreachElement = nullptr;
+	//Element* foreachElement = nullptr;
 
 };
 

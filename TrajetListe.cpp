@@ -48,40 +48,20 @@ void TrajetListe::Ajouter(const Trajet* trajet)
 	dernier = nouveau;
 } //----- Fin de Ajouter
 
-const Trajet* TrajetListe::Suivant() const
-// Algorithme :
-// retourne l'élément suivant du foreach (null si on a atteint la fin)
-{
-	if (foreachIndex == -1)
-		return Premier();
-
-	if (foreachElement == nullptr)
-		return nullptr;
-
-	foreachElement = foreachElement->suivant;
-
-	if (foreachElement == nullptr)
-		return nullptr;
-
-	foreachIndex++;
-	return foreachElement->contenu;
-}
-//----- Fin de Suivant
-
 const Trajet* TrajetListe::Premier() const
 // Algorithme :
 // retourne le premier trajet et initialise foreachElement et foreachIndex
 {
 	if (premier == nullptr) {
-		foreachElement = nullptr;
-		foreachIndex = -1;
 		return nullptr;
 	}
-	foreachElement = premier;
-	foreachIndex = 0;
 	return premier->contenu;
+	return nullptr;
 }
 
+Element* TrajetListe::PremierElement() const {
+	return premier;
+}
 
 const Trajet* TrajetListe::Dernier()  const
 // Algorithme :
@@ -91,6 +71,7 @@ const Trajet* TrajetListe::Dernier()  const
 		return nullptr;
 	}
 	return dernier->contenu;
+	return nullptr;
 }
 
 
@@ -100,7 +81,6 @@ int TrajetListe::Vide() const
 {
 	return premier == nullptr;
 } //----- Fin de Vide
-
 
 //------------------------------------------------- Surcharge d'opérateurs
 
@@ -129,8 +109,8 @@ TrajetListe::~TrajetListe()
 		delete curr;
 	}
 	premier = nullptr;
-	foreachElement = nullptr;
-	foreachIndex = -1;
+	//foreachElement = nullptr;
+	//foreachIndex = -1;
 } //----- Fin de ~TrajetListe
 
 //------------------------------------------------------------------ PRIVE
