@@ -12,6 +12,7 @@
 
 //-------------------------------------------------------- Include système
 #include <iostream>
+#include <cstring>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -32,12 +33,22 @@ void Catalogue::Ajoute(const Trajet* trajet)
 }
 // ------ Fin de Ajoute
 
-Trajet* Catalogue::TrouveTrajet(const char* depart, const char* arrivee) const
+const Trajet* Catalogue::TrouveTrajet(const char* depart, const char* arrivee) const
 // Algorithme : Trouve les trjats possibles pour aller de la ville de depart jusqu a la ville d arrivee
 //
 {
-	cout << "Le programme trouve les trajets";
+	if (trajets->Vide()) {
+		cout << "Erreur (TrouveTrajet) : Catalogue vide";
+		return nullptr;
+	}
 
+	const Trajet* curr = trajets->Premier();
+	while (curr != nullptr) {
+		if (!strcmp(curr->GetVilleDepart(), depart) && !strcmp(curr->GetVilleArrivee(), arrivee))
+			return curr;
+
+		curr = trajets->Suivant();
+	}
 }
 // ----- Fin de trouve trajet
 

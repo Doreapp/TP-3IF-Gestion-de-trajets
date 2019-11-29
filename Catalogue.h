@@ -44,7 +44,7 @@ public:
 	// Contrat :
 	//
 
-	Trajet* TrouveTrajet(const char* depart, const char* arrivee) const;
+	const Trajet* TrouveTrajet(const char* depart, const char* arrivee) const;
 	// Mode d'emploi :
 	// Effectue une recherche des trajets d'une ville depart vers une autre arrivee et renvoi un tableau avec tout les trajets trouvés (dans le catalogue)
 //
