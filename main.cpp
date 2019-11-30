@@ -49,6 +49,8 @@ int main()
 	tc1->Ajoute(new TrajetSimple("Nimes","Lyon","Bus"));
 	tc1->Ajoute(new TrajetSimple("Lyon","Grenoble","Voiture"));
 	catalogue->Ajoute(tc1);
+	
+	cout << "Bienvenue dans le menu, vous avez accés à différentes fonctionnalitées\n     Ajout - permet d'ajouter un trajet à votre catalogue\n     Affichage - permet d'afficher votre catalogue\n     Recherche - retourne les trajets du catalogue allant d'une ville A à une autre B\n     Quitter - Clos le programme\n";
 
 	cin >> lecture;
 	while(strcmp(lecture,"Quitter")!=0){
@@ -102,7 +104,7 @@ int main()
 				delete ville_arrive;
 				delete moyen;
 			}else{
-				cout << "Erreur entrée\n";
+				cout << "Erreur entrée - retour menu\n";
 			}		
 		}else if(strcmp(lecture,"Affichage")==0){
 			catalogue->Affiche();
