@@ -18,6 +18,7 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "Catalogue.h"
 #include "Trajet.h"
+#include "TrajetCompose.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -76,17 +77,21 @@ const TrajetListe* Catalogue::Recherche(const char* depart, const char* arrivee)
 			res->Ajouter(curr->contenu);
 		else if(!strcmp(curr->contenu->GetVilleDepart(),depart)){
 			const TrajetListe* inter = Recherche(curr->contenu->GetVilleArrivee(),arrivee);
-			if(!inter->Vide()){
-				res->Ajouter(curr->contenu);
+			if(!inter->Vide() && strcmp(curr->contenu->GetVilleArrivee(),depart)){
+				const TrajetCompose * tc = new TrajetCompose();	
+				tc->Ajoute(curr->contenu);
 				Element* elem = inter->PremierElement();
 				while(elem != nullptr){
-					res->Ajouter(elem->contenu);
+					tc->Ajoute(elem->contenu);
 					elem = elem->suivant;
 				}
+				delete elem;
+				res->Ajouter(tc);
 			}
 		}
 		curr = curr->suivant;
 	}
+	delete curr;
 	return res;
 }
 // ---- Fin de Recherche

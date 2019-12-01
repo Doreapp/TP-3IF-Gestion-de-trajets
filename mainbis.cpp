@@ -49,9 +49,13 @@ int main()
 	tc1->Ajoute(new TrajetSimple("Nimes","Lyon","Bus"));
 	tc1->Ajoute(new TrajetSimple("Lyon","Grenoble","Voiture"));
 	catalogue->Ajoute(tc1);
-	
+
 	cout << "Bienvenue dans le menu, vous avez accés à différentes fonctionnalitées\n     Ajout - permet d'ajouter un trajet à votre catalogue\n     Affichage - permet d'afficher votre catalogue\n     Recherche - retourne les trajets du catalogue allant d'une ville A à une autre B\n     Quitter - Clos le programme\n";
 
+	char * ville_depart = new char[100];
+	char * ville_arrive = new char[100];
+	char * moyen = new char[100];
+	
 	cin >> lecture;
 	while(strcmp(lecture,"Quitter")!=0){
 		if(strcmp(lecture,"Ajout")==0){
@@ -59,25 +63,16 @@ int main()
 			cin >> lecture;
 			if(!strcmp(lecture,"0")){
 				cout << "Entrez votre ville de départ\n";
-				char * ville_depart = new char[100];
 				cin >> ville_depart;
 				cout << "Entrez votre ville d'arrivé\n";
-				char * ville_arrive = new char[100];
 				cin >> ville_arrive;
 				cout << "Entrez votre moyen de transport\n";
-				char * moyen = new char[100];
 				cin >> moyen;
 				Trajet * trajet = new TrajetSimple(ville_depart,ville_arrive,moyen);
 				catalogue->Ajoute(trajet);
 				cout << "Votre trajet a bien été ajouté\n";	
-				delete ville_depart;
-				delete ville_arrive;
-				delete moyen;
 			}else if(!strcmp(lecture,"1")){
 				TrajetCompose * trajet = new TrajetCompose();
-				char * ville_depart = new char[100];
-				char * ville_arrive = new char[100];
-				char * moyen = new char[100];
 
 				cout << "Entrez votre ville de départ\n";
 				cin >> ville_depart;
@@ -100,17 +95,12 @@ int main()
 
 				catalogue->Ajoute(trajet);
 				cout << "Votre trajet a bien été ajouté\n";
-				delete ville_depart;
-				delete ville_arrive;
-				delete moyen;
 			}else{
 				cout << "Erreur entrée - retour menu\n";
 			}		
 		}else if(strcmp(lecture,"Affichage")==0){
 			catalogue->Affiche();
 		}else if(strcmp(lecture,"Recherche")==0){
-			char * ville_depart = new char[100];
-			char * ville_arrive = new char[100];
 			cout << "Entrez votre ville de départ\n";
 			cin >> ville_depart;
 			cout << "Entrez votre ville d'arrivé\n";
@@ -137,9 +127,6 @@ int main()
 				}
 				delete curr;
 			}
-			delete ville_depart;
-			delete ville_arrive;
-			delete recherche;
 		}
 		cin >> lecture;
 	}	
