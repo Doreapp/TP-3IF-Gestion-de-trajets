@@ -1,16 +1,16 @@
 /*************************************************************************
-						   Trajet Liste  -  Liste de trajets
+						   Trajet Compos√©  -  Impl√©mentation d'un trajet simple entre 2 villes
 							 -------------------
-	dÈbut                : 22/11/2019 - /
+	d√©but                : 22/11/2019 - /
 	copyright            : (C) 2019/2020 par Carreau Damien et Mandin Antoine
 	e-mail               : antoine.mandin@insa-lyon.fr / damien.carreau@insa-lyon.fr
 *************************************************************************/
 
-//---------- RÈalisation de la classe <TrajetListe> (fichier TrajetListe.cpp) ------------
+//---------- R√©alisation de la classe <TrajetListe> (fichier TrajetListe.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include systËme
+//-------------------------------------------------------- Include syst√®me
 #include <iostream>
 using namespace std;
 
@@ -21,12 +21,13 @@ using namespace std;
 
 //----------------------------------------------------------------- PUBLIC
 
-//----------------------------------------------------- MÈthodes publiques
+//----------------------------------------------------- M√©thodes publiques
+
 
 void TrajetListe::Ajouter(const Trajet* trajet)
 // Algorithme :
 // Si la liste est vide, on ajoute le trajet en tant que premier et dernier
-// Sinon ajoute le trajet en derniËre position
+// Sinon ajoute le trajet en derni√®re position
 {
 	//Liste vide ?
 	if (premier == nullptr) {
@@ -37,7 +38,7 @@ void TrajetListe::Ajouter(const Trajet* trajet)
 		return;
 	}
 
-	//Nouvel ÈlÈment contenant le trajet
+	//Nouvel √©l√©ment contenant le trajet
 	Element* nouveau = new Element();
 	nouveau->contenu = trajet;
 	nouveau->suivant = nullptr;
@@ -58,10 +59,7 @@ const Trajet* TrajetListe::Premier() const
 	return nullptr;
 }
 
-Element* TrajetListe::PremierElement() const 
-// Algorithme :
-// get basique
-{
+Element* TrajetListe::PremierElement() const {
 	return premier;
 }
 
@@ -76,14 +74,15 @@ const Trajet* TrajetListe::Dernier()  const
 	return nullptr;
 }
 
+
 int TrajetListe::Vide() const
 // Algorithme :
-// Retourne si la liste est vide, cad si il n'y a pas de premier ÈlÈment
+// Retourne si la liste est vide, cad si il n'y a pas de premier √©l√©ment
 {
 	return premier == nullptr;
 } //----- Fin de Vide
 
-//------------------------------------------------- Surcharge d'opÈrateurs
+//------------------------------------------------- Surcharge d'op√©rateurs
 
 //-------------------------------------------- Constructeurs - destructeur
 TrajetListe::TrajetListe()
@@ -98,10 +97,10 @@ TrajetListe::TrajetListe()
 
 TrajetListe::~TrajetListe()
 // Algorithme :
-// Detruit chaque ÈlÈment de la liste
+// Detruit chaque √©l√©ment de la liste
 {
 #ifdef MAP
-	cout << "Appel au destructeur de <EnTrajetListe>" << endl;
+	cout << "Appel au destructeur de <EnTrajetListesemble>" << endl;
 #endif
 	for (Element* curr = premier; curr != nullptr; curr = premier) {
 		premier = curr->suivant;
@@ -116,5 +115,4 @@ TrajetListe::~TrajetListe()
 
 //------------------------------------------------------------------ PRIVE
 
-//----------------------------------------------------- MÈthodes protÈgÈes
-
+//----------------------------------------------------- M√©thodes prot√©g√©es

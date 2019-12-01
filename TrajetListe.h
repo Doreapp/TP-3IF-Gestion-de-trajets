@@ -1,16 +1,16 @@
 /*************************************************************************
-						   Trajet ComposÈ  -  ImplÈmentation d'un trajet simple entre 2 villes
+						   Trajet Compos√©  -  Impl√©mentation d'un trajet simple entre 2 villes
 							 -------------------
-	dÈbut                : 22/11/2019 - /
+	d√©but                : 22/11/2019 - /
 	copyright            : (C) 2019/2020 par Carreau Damien et Mandin Antoine
 	e-mail               : antoine.mandin@insa-lyon.fr / damien.carreau@insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <TrajetListe> (fichier TrajetListe.h) ----------------
-#if ! defined ( TRAJET_LISTE_H )
-#define TRAJET_LISTE_H
+#if ! defined ( ENSEMBLE_H )
+#define ENSEMBLE_H
 
-//--------------------------------------------------- Interfaces utilisÈes
+//--------------------------------------------------- Interfaces utilis√©es
 #include "Trajet.h"
 
 //------------------------------------------------------------- Constantes
@@ -18,13 +18,13 @@
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// RÙle de la classe <TrajetListe>
-//Trajet liste reprÈsente une liste de trajets
-//Dans celle ci il est facile de rÈcupÈrer le premier ÈlÈment ainsi que le dernier
-//Les "for each" sont Ègalement facilitÈs par des mÈthode (Premier et Suivant)
+// R√¥le de la classe <TrajetListe>
+//Trajet liste repr√©sente une liste de trajets
+//Dans celle ci il est facile de r√©cup√©rer le premier √©l√©ment ainsi que le dernier
+//Les "for each" sont √©galement facilit√©s par des m√©thode (Premier et Suivant)
 //------------------------------------------------------------------------
 
-//Structure rÈprÈsentant un ÈlÈment de la liste
+//Structure r√©pr√©sentant un √©l√©ment de la liste
 typedef struct structElement {
 	//Contenu de l'element : un trajet
 	const Trajet* contenu;
@@ -38,17 +38,19 @@ class TrajetListe
 	//----------------------------------------------------------------- PUBLIC
 
 public:
-	//----------------------------------------------------- MÈthodes publiques
+	//----------------------------------------------------- M√©thodes publiques
 
 		const Trajet* Premier() const;
 		// Mode d'emploi :
 		// Retourne le premier trajet
+		// Et initialise un foreach
 		// Contrat :
 		//
 
 		Element* PremierElement() const;
 		// Mode d'emploi :
-		// Retourne le premier ÈlÈment de la liste
+		// Retourne le premier trajet
+		// Et initialise un foreach
 		// Contrat :
 		//
 
@@ -60,7 +62,7 @@ public:
 
 		void Ajouter(const Trajet* trajet);
 		// Mode d'emploi :
-		// Ajoute un trajet dans la liste, en derniËre position
+		// Ajoute un trajet dans la liste, en derni√®re position
 		// Contrat :
 		//
 
@@ -71,7 +73,7 @@ public:
 		//
 
 
-	//------------------------------------------------- Surcharge d'opÈrateurs
+	//------------------------------------------------- Surcharge d'op√©rateurs
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -83,32 +85,37 @@ public:
 
 	virtual ~TrajetListe();
 	// Mode d'emploi :
-	// Supprime la liste et chacun de ses ÈlÈments
+	// Supprime la liste et chacun de ses √©l√©ments
 	// Contrat :
 	//
 
 //------------------------------------------------------------------ PRIVE
 
 protected:
-	//----------------------------------------------------- MÈthodes protÈgÈes
+	//----------------------------------------------------- M√©thodes prot√©g√©es
 
-	//----------------------------------------------------- Attributs protÈgÈs
+	//----------------------------------------------------- Attributs prot√©g√©s
 	
 
 private:
-	//----------------------------------------------------- MÈthodes privÈe
+	//----------------------------------------------------- M√©thodes priv√©e
 
-	//----------------------------------------------------- Attributs privÈe
+	//----------------------------------------------------- Attributs priv√©e
 	
-	//Dernier ÈlÈment de la liste (si vide nullptr)
+	//Dernier √©l√©ment de la liste (si vide nullptr)
 	Element* dernier = nullptr;
 
-	//Premier ÈlÈment de la liste (si vide nullptr)
+	//Premier √©l√©ment de la liste (si vide nullptr)
 	Element* premier = nullptr;
+	
+	//Variables utilis√©es pour le foreach
+	//indice de l'√©l√©ment retourn√© par 'suivant'
+	//int foreachIndex = -1;
+	//√©l√©ment retourn√© par 'suivant'
+	//Element* foreachElement = nullptr;
+
 };
 
-//-------------------------------- Autres dÈfinitions dÈpendantes de <TrajetListe>
+//-------------------------------- Autres d√©finitions d√©pendantes de <Ensemble>
 
-#endif // TRAJET_LISTE_H
-
-
+#endif // ENSEMBLE_H
