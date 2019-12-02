@@ -1,16 +1,16 @@
 /*************************************************************************
 						   Catalogue  -  description
 							 -------------------
-	début                : 22/11/2019
-	copyright            : (C) 2019-2020 par CARREAU Damien et MANDIN Antoine
-	e-mail               : carreau.damien@gmail.com | antoine.mandin@insa-lyon.fr
+	dÃ©but                : 22/11/2019
+	copyright            : (C) 2019-2020 par CARREAU Damien
+	e-mail               : carreau.damien@gmail.com
 *************************************************************************/
 
-//---------- Réalisation de la classe <Catalogue> (fichier Catalogue.cpp) ------------
+//---------- RÃ©alisation de la classe <Catalogue> (fichier Catalogue.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include système
+//-------------------------------------------------------- Include systÃ¨me
 #include <iostream>
 #include <cstring>
 using namespace std;
@@ -18,29 +18,30 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "Catalogue.h"
 #include "Trajet.h"
+#include "TrajetCompose.h"
 
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
-//----------------------------------------------------- Méthodes publiques
+//----------------------------------------------------- MÃ©thodes publiques
 
 void Catalogue::Ajoute(const Trajet* trajet)
-// Algorithme : 
-// Ajoute un trajet au catalogue
+// Algorithme : Ajoute un trajet au catalogue
+//
 {
 	trajets->Ajouter(trajet);
 }
 // ------ Fin de Ajoute
 
 const TrajetListe* Catalogue::TrouveTrajet(const char* depart, const char* arrivee) const
-// Algorithme : 
-// Trouve les trajets possibles pour aller de la ville de depart jusqu a la ville d'arrivée
+// Algorithme : Trouve les trjats possibles pour aller de la ville de depart jusqu a la ville d arrivee
+//
 {
 	TrajetListe* res = new TrajetListe();
 
 	if (trajets->Vide()) {
-		cout << "Catalogue vide";
+		cout << "Catalogue vide\n";
 		return res;
 	}
 	
@@ -56,6 +57,45 @@ const TrajetListe* Catalogue::TrouveTrajet(const char* depart, const char* arriv
 	return res;
 }
 // ----- Fin de trouve trajet
+
+
+const TrajetListe* Catalogue::Recherche(const char* depart, const char* arrivee) const
+// Algorithme : Recherche 2
+//
+{
+	TrajetListe* res = new TrajetListe();
+
+	if(trajets->Vide()){
+		cout << "Catalogue vide\n";
+		return res;
+	}	
+	
+	Element* curr = trajets->PremierElement();
+	while (curr != nullptr){
+		if (!strcmp(curr->contenu->GetVilleDepart(), depart) && 
+			!strcmp(curr->contenu->GetVilleArrivee(), arrivee))
+			res->Ajouter(curr->contenu);
+		else if(!strcmp(curr->contenu->GetVilleDepart(),depart)){
+			const TrajetListe* inter = Recherche(curr->contenu->GetVilleArrivee(),arrivee);
+			if(!inter->Vide() && strcmp(curr->contenu->GetVilleArrivee(),depart)){
+				const TrajetCompose * tc = new TrajetCompose();	
+				tc->Ajoute(curr->contenu);
+				Element* elem = inter->PremierElement();
+				while(elem != nullptr){
+					tc->Ajoute(elem->contenu);
+					elem = elem->suivant;
+				}
+				delete elem;
+				res->Ajouter(tc);
+			}
+		}
+		curr = curr->suivant;
+	}
+	delete curr;
+	return res;
+}
+// ---- Fin de Recherche
+
 
 const void Catalogue::Affiche() const
 // Algorithme : Affiche les trajets du catalogue dans le terminal
@@ -79,13 +119,13 @@ const void Catalogue::Affiche() const
 }
 // ----- Fin de Affichage
 
-//----------------------------------------------------- Méthodes privés
+//----------------------------------------------------- MÃ©thodes privÃ©s
 
 //-------------------------------------------- Constructeurs - destructeur;
 
 Catalogue::Catalogue()
 // Algorithme :
-// Initialise trajets
+//
 {
 #ifdef MAP
 	cout << "Appel au constructeur de <Catalogue>" << endl;
@@ -97,7 +137,7 @@ Catalogue::Catalogue()
 
 Catalogue::~Catalogue()
 // Algorithme :
-// Delete trajets
+//
 {
 #ifdef MAP
 	cout << "Appel au destructeur de <Catalogue>" << endl;
@@ -109,4 +149,4 @@ Catalogue::~Catalogue()
 
 //------------------------------------------------------------------ PRIVE
 
-//----------------------------------------------------- Méthodes protégées
+//----------------------------------------------------- MÃ©thodes protÃ©gÃ©es
