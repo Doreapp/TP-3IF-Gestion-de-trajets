@@ -1,7 +1,6 @@
 /*******************************************************************************
  			  main - description
 			  ------------------
-
 	début		: 22/11/2019
 	copyright            : (C) 2019/2020 par Carreau Damien et Mandin Antoine
 	e-mail               : antoine.mandin@insa-lyon.fr / damien.carreau@insa-lyon.fr
@@ -38,7 +37,7 @@ int main()
 // Interface homme code
 //
 {
-	char * lecture = new char[100];
+	char lecture[100];
 	Catalogue * catalogue = new Catalogue();
 	
 	Trajet * ts1 = new TrajetSimple("Lyon","Paris","Voiture");
@@ -50,11 +49,20 @@ int main()
 	tc1->Ajoute(new TrajetSimple("Lyon","Grenoble","Voiture"));
 	catalogue->Ajoute(tc1);
 
+	catalogue->Ajoute(new TrajetSimple("A", "B", "o"));
+	catalogue->Ajoute(new TrajetSimple("B", "C", "o"));
+	catalogue->Ajoute(new TrajetSimple("C", "D", "o"));
+	catalogue->Ajoute(new TrajetSimple("D", "A", "o"));
+	catalogue->Ajoute(new TrajetSimple("E", "B", "o"));
+	catalogue->Ajoute(new TrajetSimple("E", "F", "o"));
+	catalogue->Ajoute(new TrajetSimple("D", "B", "o"));
+	catalogue->Ajoute(new TrajetSimple("A", "E", "o"));
+
 	cout << "Bienvenue dans le menu, vous avez accés à différentes fonctionnalitées\n     Ajout - permet d'ajouter un trajet à votre catalogue\n     Affichage - permet d'afficher votre catalogue\n     Recherche - retourne les trajets du catalogue allant d'une ville A à une autre B\n     Quitter - Clos le programme\n";
 
-	char * ville_depart = new char[100];
-	char * ville_arrive = new char[100];
-	char * moyen = new char[100];
+	char ville_depart[100];
+	char ville_arrive[100];
+	char moyen[100];
 	
 	cin >> lecture;
 	while(strcmp(lecture,"Quitter")!=0){
@@ -127,6 +135,7 @@ int main()
 				}
 				delete curr;
 			}
+			delete recherche;
 		}
 		cin >> lecture;
 	}	

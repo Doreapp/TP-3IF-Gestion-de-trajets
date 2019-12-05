@@ -1,16 +1,16 @@
 /*************************************************************************
-						   Trajet  -  Classe représentant un trajet
+						   Trajet  -  Classe reprÃ©sentant un trajet
 							 -------------------
-	début                : 22/11/2019 - /
+	dÃ©but                : 22/11/2019 - /
 	copyright            : (C) 2019/2020 par Carreau Damien et Mandin Antoine
 	e-mail               : antoine.mandin@insa-lyon.fr / damien.carreau@insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <Trajet> (fichier Trajet.cpp) ------------
+//---------- RÃ©alisation de la classe <Trajet> (fichier Trajet.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include système
+//-------------------------------------------------------- Include systÃ¨me
 #include <iostream>
 using namespace std;
 
@@ -21,9 +21,9 @@ using namespace std;
 
 //----------------------------------------------------------------- PUBLIC
 
-//----------------------------------------------------- Méthodes publiques
+//----------------------------------------------------- MÃ©thodes publiques
 
-//------------------------------------------------- Surcharge d'opérateurs
+//------------------------------------------------- Surcharge d'opÃ©rateurs
 
 //-------------------------------------------- Constructeurs - destructeur
 // PAS DE CONSTUCTEUR PUBLIC
@@ -39,5 +39,4 @@ Trajet::~Trajet()
 
 //------------------------------------------------------------------ PRIVE
 
-//----------------------------------------------------- Méthodes protégées
-
+//----------------------------------------------------- MÃ©thodes protÃ©gÃ©es

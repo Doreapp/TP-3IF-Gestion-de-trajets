@@ -1,16 +1,16 @@
 /*************************************************************************
-						   Trajet Composé  -  Implémentation d'un trajet simple entre 2 villes
+						   Trajet ComposÃ©  -  ImplÃ©mentation d'un trajet simple entre 2 villes
 							 -------------------
-	début                : 22/11/2019 - /
+	dÃ©but                : 22/11/2019 - /
 	copyright            : (C) 2019/2020 par Carreau Damien et Mandin Antoine
 	e-mail               : antoine.mandin@insa-lyon.fr / damien.carreau@insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <TrajetCompose> (fichier TrajetCompose.cpp) ------------
+//---------- RÃ©alisation de la classe <TrajetCompose> (fichier TrajetCompose.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include système
+//-------------------------------------------------------- Include systÃ¨me
 #include <iostream>
 #include <cstring>
 using namespace std;
@@ -22,11 +22,11 @@ using namespace std;
 
 //----------------------------------------------------------------- PUBLIC
 
-//----------------------------------------------------- Méthodes publiques
+//----------------------------------------------------- MÃ©thodes publiques
 
 char* TrajetCompose::GetVilleDepart() const
 // Algorithme :
-// Retourne la ville de départ du trajet (donc celle du premier trajet)
+// Retourne la ville de dÃ©part du trajet (donc celle du premier trajet)
 // Retourne null si le trajet est vide
 {
 	if (liste->Vide())
@@ -37,7 +37,7 @@ char* TrajetCompose::GetVilleDepart() const
 
 char* TrajetCompose::GetVilleArrivee() const
 // Algorithme :
-// Retourne la ville d'arrivée du trajet (donc celle du dernier trajet)
+// Retourne la ville d'arrivÃ©e du trajet (donc celle du dernier trajet)
 // Retourne null si le trajet est vide
 {
 	if (liste->Vide())
@@ -48,14 +48,14 @@ char* TrajetCompose::GetVilleArrivee() const
 
 const void TrajetCompose::Affiche() const
 // Algorithme :
-// Affiche chaque trajet interne séparés par des -
+// Affiche chaque trajet interne sÃ©parÃ©s par des -
 {
 	if (liste->Vide()) {
 		cout << "{Vide}";
 		return;
 	}
 	
-	//indice du trajet affiché
+	//indice du trajet affichÃ©
 	int index = 0;
 
 	//taille totale de la liste
@@ -64,14 +64,13 @@ const void TrajetCompose::Affiche() const
 	for (const Trajet* t : *liste) {
 		t->Affiche();
 
-		//s'il ne s'agit pas du dernier element, ajoute un ' - ' à la fin
+		//s'il ne s'agit pas du dernier element, ajoute un ' - ' Ã  la fin
 		if (++index < length)
 			cout << " - ";
 	}
 	/*Element* curr = liste->PremierElement();
 	while (curr != nullptr) {
 		curr->contenu->Affiche();
-
 		curr = curr->suivant;
 		if (curr != nullptr)
 			cout << " - ";
@@ -80,10 +79,10 @@ const void TrajetCompose::Affiche() const
 
 void TrajetCompose::Ajoute(const Trajet* trajet)
 // Algorithme :
-// lie l'actuel dernier élément à un nouoveau élément (lié au trajet en paramètre)
-// pointe dernier vers le nouvele élément créé
-// Affiche une erreur si l'actuelle ville d'arrivée ne correspond pas à la ville
-// de départ du trajet à ajouter
+// lie l'actuel dernier Ã©lÃ©ment Ã  un nouoveau Ã©lÃ©ment (liÃ© au trajet en paramÃ¨tre)
+// pointe dernier vers le nouvele Ã©lÃ©ment crÃ©Ã©
+// Affiche une erreur si l'actuelle ville d'arrivÃ©e ne correspond pas Ã  la ville
+// de dÃ©part du trajet Ã  ajouter
 {
 	if (liste->Vide()) {
 		liste->Ajouter(trajet);
@@ -103,7 +102,7 @@ void TrajetCompose::Ajoute(const Trajet* trajet)
 	liste->Ajouter(trajet);
 }//----- Fin de Ajoute
 
-//------------------------------------------------- Surcharge d'opérateurs
+//------------------------------------------------- Surcharge d'opÃ©rateurs
 
 //-------------------------------------------- Constructeurs - destructeur
 TrajetCompose::TrajetCompose()
@@ -119,7 +118,7 @@ TrajetCompose::TrajetCompose()
 
 TrajetCompose::TrajetCompose(TrajetCompose* src)
 // Algorithme :
-// Initialise liste avec les éléments contenus dans la source
+// Initialise liste avec les Ã©lÃ©ments contenus dans la source
 {
 #ifdef MAP
 	cout << "Appel au constructeur de copie de <TrajetCompose>" << endl;
@@ -140,5 +139,4 @@ TrajetCompose::~TrajetCompose()
 
 //------------------------------------------------------------------ PRIVE
 
-//----------------------------------------------------- Méthodes protégées
-
+//----------------------------------------------------- MÃ©thodes protÃ©gÃ©es

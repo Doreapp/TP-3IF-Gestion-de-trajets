@@ -1,7 +1,7 @@
 /*************************************************************************
-						   Trajet  -  Classe représentant un trajet
+						   Trajet  -  Classe reprÃ©sentant un trajet
 							 -------------------
-	début                : 22/11/2019 - /
+	dÃ©but                : 22/11/2019 - /
 	copyright            : (C) 2019/2020 par Carreau Damien et Mandin Antoine
 	e-mail               : antoine.mandin@insa-lyon.fr / damien.carreau@insa-lyon.fr
 *************************************************************************/
@@ -10,14 +10,14 @@
 #if ! defined ( TRAJET_H )
 #define TRAJET_H
 
-//--------------------------------------------------- Interfaces utilisées
+//--------------------------------------------------- Interfaces utilisÃ©es
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Trajet>
+// RÃ´le de la classe <Trajet>
 //
 //
 //------------------------------------------------------------------------
@@ -27,30 +27,30 @@ class Trajet
 	//----------------------------------------------------------------- PUBLIC
 
 public:
-	//----------------------------------------------------- Méthodes publiques
+	//----------------------------------------------------- MÃ©thodes publiques
 	virtual char* GetVilleDepart() const = 0;
 	// Mode d'emploi :
-	// Retourne la ville de départ du trajet sous forme de tableau de caractère
-	// Retourne NULL si méthode non surchargée (implémentée par une classe enfant)
+	// Retourne la ville de dÃ©part du trajet sous forme de tableau de caractÃ¨re
+	// Retourne NULL si mÃ©thode non surchargÃ©e (implÃ©mentÃ©e par une classe enfant)
 	// Contrat : 
 	// 
 
 	virtual char* GetVilleArrivee() const = 0;
 	// Mode d'emploi :
-	// Retourne la ville d'arrivée du trajet sous forme de tableau de caractère
-	// Retourne NULL si méthode non surchargée (implémentée par une classe enfant)
+	// Retourne la ville d'arrivÃ©e du trajet sous forme de tableau de caractÃ¨re
+	// Retourne NULL si mÃ©thode non surchargÃ©e (implÃ©mentÃ©e par une classe enfant)
 	// Contrat : 
 	// 
 
 	virtual const void Affiche() const = 0;
 	// Mode d'emploi :
 	// Affiche le trajet 
-	// Affiche '{Non implémentée}' si méthode non surchargée (implémentée par une classe enfant)
+	// Affiche '{Non implÃ©mentÃ©e}' si mÃ©thode non surchargÃ©e (implÃ©mentÃ©e par une classe enfant)
 	// Contrat : 
 	// 
 
 
-	//------------------------------------------------- Surcharge d'opérateurs
+	//------------------------------------------------- Surcharge d'opÃ©rateurs
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -65,13 +65,12 @@ public:
 //------------------------------------------------------------------ PRIVE
 
 protected:
-	//----------------------------------------------------- Méthodes protégées
+	//----------------------------------------------------- MÃ©thodes protÃ©gÃ©es
 
-	//----------------------------------------------------- Attributs protégés
+	//----------------------------------------------------- Attributs protÃ©gÃ©s
 
 };
 
-//-------------------------------- Autres définitions dépendantes de <Trajet>
+//-------------------------------- Autres dÃ©finitions dÃ©pendantes de <Trajet>
 
 #endif // TRAJET_H
-

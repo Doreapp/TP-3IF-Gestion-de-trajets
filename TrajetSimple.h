@@ -1,7 +1,7 @@
 /*************************************************************************
-						   Trajet Simple  -  Implémentation d'un trajet simple entre 2 villes
+						   Trajet Simple  -  ImplÃ©mentation d'un trajet simple entre 2 villes
 							 -------------------
-	début                : 22/11/2019 - /
+	dÃ©but                : 22/11/2019 - /
 	copyright            : (C) 2019/2020 par Carreau Damien et Mandin Antoine
 	e-mail               : antoine.mandin@insa-lyon.fr / damien.carreau@insa-lyon.fr
 *************************************************************************/
@@ -10,7 +10,7 @@
 #if ! defined ( TRAJET_SIMPLE_H )
 #define TRAJET_SIMPLE_H
 
-//--------------------------------------------------- Interfaces utilisées
+//--------------------------------------------------- Interfaces utilisÃ©es
 #include "Trajet.h"
 
 //------------------------------------------------------------- Constantes
@@ -18,7 +18,7 @@
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <TrajetSimple>
+// RÃ´le de la classe <TrajetSimple>
 //
 //
 //------------------------------------------------------------------------
@@ -28,20 +28,20 @@ class TrajetSimple : public Trajet
 	//----------------------------------------------------------------- PUBLIC
 
 public:
-	//----------------------------------------------------- Méthodes publiques
-	//----------------------------------------------------Méthodes surchargées
+	//----------------------------------------------------- MÃ©thodes publiques
+	//----------------------------------------------------MÃ©thodes surchargÃ©es
 	char* GetVilleDepart() const;
 	char* GetVilleArrivee() const;
 	const void Affiche() const;
 
-	//------------------------------------------------- Surcharge d'opérateurs
+	//------------------------------------------------- Surcharge d'opÃ©rateurs
 
 //-------------------------------------------- Constructeurs - destructeur
 	TrajetSimple(const char* villeDepart, const char* villeArrivee, const char* transport);
 	// Mode d'emploi :
-	//		villeDepart représente la ville de départ du trajet
-	//		villeArrivee représente la ville d'arrivée du trajet
-	//		transport représente le moyen de transport utilisé
+	//		villeDepart reprÃ©sente la ville de dÃ©part du trajet
+	//		villeArrivee reprÃ©sente la ville d'arrivÃ©e du trajet
+	//		transport reprÃ©sente le moyen de transport utilisÃ©
 	// Contrat :
 	//
 
@@ -54,26 +54,26 @@ public:
 //------------------------------------------------------------------ PRIVE
 
 protected:
-	//----------------------------------------------------- Méthodes protégées
+	//----------------------------------------------------- MÃ©thodes protÃ©gÃ©es
 
-	//----------------------------------------------------- Attributs protégés
+	//----------------------------------------------------- Attributs protÃ©gÃ©s
 
 private:
-	//----------------------------------------------------- Méthodes privées
+	//----------------------------------------------------- MÃ©thodes privÃ©es
 
-	//----------------------------------------------------- Attributs privés
+	//----------------------------------------------------- Attributs privÃ©s
 	char* villeDepart;
-	//texte représentant le nom de la ville de départ du trajet
+	//texte reprÃ©sentant le nom de la ville de dÃ©part du trajet
 
 	char* villeArrivee;
-	//texte représentant le nom de la ville d'arrivé du trajet
+	//texte reprÃ©sentant le nom de la ville d'arrivÃ© du trajet
 
 	char* transport;
-	//texte représentant le moyen de transport du trajet
+	//texte reprÃ©sentant le moyen de transport du trajet
 
 };
 
-//-------------------------------- Autres définitions dépendantes de <TrajetSimple>
+//-------------------------------- Autres dÃ©finitions dÃ©pendantes de <TrajetSimple>
 
 #endif // TRAJET_SIMPLE_H
 

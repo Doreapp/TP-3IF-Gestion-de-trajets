@@ -1,7 +1,7 @@
 /*************************************************************************
-						   Trajet Composé  -  Implémentation d'un trajet simple entre 2 villes
+						   Trajet ComposÃ©  -  ImplÃ©mentation d'un trajet simple entre 2 villes
 							 -------------------
-	début                : 22/11/2019 - /
+	dÃ©but                : 22/11/2019 - /
 	copyright            : (C) 2019/2020 par Carreau Damien et Mandin Antoine
 	e-mail               : antoine.mandin@insa-lyon.fr / damien.carreau@insa-lyon.fr
 *************************************************************************/
@@ -10,7 +10,7 @@
 #if ! defined ( TRAJET_COMPOSE_H )
 #define TRAJET_COMPOSE_H
 
-//--------------------------------------------------- Interfaces utilisées
+//--------------------------------------------------- Interfaces utilisÃ©es
 #include "Trajet.h"
 #include "TrajetListe.h"
 
@@ -19,8 +19,8 @@
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <TrajetCompose>
-// Représente un trajet composé de plusieurs trajets 
+// RÃ´le de la classe <TrajetCompose>
+// ReprÃ©sente un trajet composÃ© de plusieurs trajets 
 // 
 //------------------------------------------------------------------------
 
@@ -29,19 +29,19 @@ class TrajetCompose : public Trajet
 //----------------------------------------------------------------- PUBLIC
 
 public:
-//----------------------------------------------------- Méthodes publiques
+//----------------------------------------------------- MÃ©thodes publiques
 	char* GetVilleDepart() const;
 	char* GetVilleArrivee() const;
 	const void Affiche() const;
 
 	void Ajoute(const Trajet* trajet);
 	// Mode d'emploi :
-	// Ajoute le trajet à la liste des trajets 
+	// Ajoute le trajet Ã  la liste des trajets 
 	// Contrat :
 	// trajet non null
 
 
-//------------------------------------------------- Surcharge d'opérateurs
+//------------------------------------------------- Surcharge d'opÃ©rateurs
 
 //-------------------------------------------- Constructeurs - destructeur
 	TrajetCompose();
@@ -52,7 +52,7 @@ public:
 
 	TrajetCompose(TrajetCompose* src);
 	// Mode d'emploi :
-	// Constructeur de copie, possède les mêmes trajets (par adresses)
+	// Constructeur de copie, possÃ¨de les mÃªmes trajets (par adresses)
 	// Contrat :
 	// 
 
@@ -65,20 +65,19 @@ public:
 //------------------------------------------------------------------ PRIVE
 
 protected:
-//----------------------------------------------------- Méthodes protégées
+//----------------------------------------------------- MÃ©thodes protÃ©gÃ©es
 
-//----------------------------------------------------- Attributs protégés
+//----------------------------------------------------- Attributs protÃ©gÃ©s
 
 private:
-	//----------------------------------------------------- Méthodes privées
+	//----------------------------------------------------- MÃ©thodes privÃ©es
 
-	//----------------------------------------------------- Attributs privés
+	//----------------------------------------------------- Attributs privÃ©s
 	TrajetListe* liste;
 	//liste des trajets internes
 };
 
-//-------------------------------- Autres définitions dépendantes de <TrajetCompose>
+//-------------------------------- Autres dÃ©finitions dÃ©pendantes de <TrajetCompose>
 
 
 #endif // TRAJET_COMPOSE_H
-

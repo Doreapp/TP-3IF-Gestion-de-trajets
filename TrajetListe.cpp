@@ -72,8 +72,13 @@ void TrajetListe::Supprimer(const int pos)
 	for (int i = 1; i < pos; i++) {
 		before = before->suivant;
 	}
-	if (before->suivant != nullptr)
-		before->suivant = before->suivant->suivant;
+	if (before->suivant != nullptr){
+		Element* toFree = before->suivant;
+
+		before->suivant = toFree->suivant;
+		
+		delete toFree;
+	}
 
 	if (before->suivant == nullptr)
 		dernier = before;
@@ -207,7 +212,6 @@ TrajetListe::~TrajetListe()
 	length = 0;
 	/*for (Element* curr = premier; curr != nullptr; curr = premier) {
 		premier = curr->suivant;
-
 		delete curr->contenu;
 		delete curr;
 	}
