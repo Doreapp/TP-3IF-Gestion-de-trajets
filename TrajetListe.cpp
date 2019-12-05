@@ -165,14 +165,8 @@ void sIElement::operator++()
 }
 
 void TrajetListe::deleteElements() {
-	for (Element* curr = premier; curr != nullptr; curr = premier) {
-		premier = curr->suivant;
-
-		delete curr->contenu;
-		delete curr;
-	}
-	premier = nullptr;
-	length = 0;
+	for (const Trajet* t : *this)
+		delete t;
 }
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -204,6 +198,13 @@ TrajetListe::~TrajetListe()
 #ifdef MAP
 	cout << "Appel au destructeur de <TrajetListe>" << endl;
 #endif
+	for (Element* curr = premier; curr != nullptr; curr = premier) {
+		premier = curr->suivant;
+
+		delete curr;
+	}
+	premier = nullptr;
+	length = 0;
 	/*for (Element* curr = premier; curr != nullptr; curr = premier) {
 		premier = curr->suivant;
 
