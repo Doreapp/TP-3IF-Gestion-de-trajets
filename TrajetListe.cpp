@@ -1,5 +1,5 @@
 /*************************************************************************
-						   Trajet Composé  -  Implémentation d'un trajet simple entre 2 villes
+						   Trajet Liste  -  Représente une liste de trajets
 							 -------------------
 	début                : 22/11/2019 - /
 	copyright            : (C) 2019/2020 par Carreau Damien et Mandin Antoine
@@ -53,7 +53,9 @@ void TrajetListe::Ajouter(const Trajet* trajet)
 
 void TrajetListe::Supprimer(const int pos)
 // Algorithme :
-//
+// si vide, ne fait rien
+// sinon supprimer l'élement en (pos+1)ème position de la liste 
+// (sans le supprimer de la mémoire)
 {
 	if (Vide())
 		return;
@@ -79,16 +81,19 @@ void TrajetListe::Supprimer(const int pos)
 
 const Trajet* TrajetListe::Premier() const
 // Algorithme :
-// retourne le premier trajet et initialise foreachElement et foreachIndex
+// retourne le premier trajet (null si la liste est vide)
 {
-	if (premier == nullptr) {
+	if (Vide()) {
 		return nullptr;
 	}
 	return premier->contenu;
 	return nullptr;
 }
 
-Element* TrajetListe::PremierElement() const {
+Element* TrajetListe::PremierElement() const 
+// Algorithme :
+// Retourne le premier element
+{
 	return premier;
 }
 
@@ -119,14 +124,20 @@ IElement TrajetListe::begin() const
 // Algorithme :
 // [Méthode système] retourne le premier élément, indice 0
 {
-	return IElement(premier, 0);
+	IElement res = IElement();
+	res.p = premier;
+	res.pos = 0;
+	return res;
 }
 
 IElement TrajetListe::end() const
 // Algorithme :
 // [Méthode système] retourne le dernier élément, indice {length}
 {
-	return IElement(dernier, length);
+	IElement res = IElement();
+	res.p = dernier;
+	res.pos = length;
+	return res;
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -192,12 +203,6 @@ TrajetListe::~TrajetListe()
 	//foreachElement = nullptr;
 	//foreachIndex = -1;
 } //----- Fin de ~TrajetListe
-
-sIElement::sIElement(Element* p, int pos)
-// Algorithme :
-// Initialise l'élément itérable, contenant l'{Element} p, à l'indice pos
-	: p(p), pos(pos) 
-{} //----- Fin de sIElement
 
 //------------------------------------------------------------------ PRIVE
 

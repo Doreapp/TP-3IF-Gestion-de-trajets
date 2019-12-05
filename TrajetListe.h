@@ -1,5 +1,5 @@
 /*************************************************************************
-						   Trajet Composé  -  Implémentation d'un trajet simple entre 2 villes
+						   Trajet Liste -  Représente une liste de trajets
 							 -------------------
 	début                : 22/11/2019 - /
 	copyright            : (C) 2019/2020 par Carreau Damien et Mandin Antoine
@@ -7,8 +7,8 @@
 *************************************************************************/
 
 //---------- Interface de la classe <TrajetListe> (fichier TrajetListe.h) ----------------
-#if ! defined ( ENSEMBLE_H )
-#define ENSEMBLE_H
+#if ! defined ( TRAJET_LISTE_H )
+#define TRAJET_LISTE_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Trajet.h"
@@ -19,9 +19,10 @@
 
 //------------------------------------------------------------------------
 // Rôle de la classe <TrajetListe>
-//Trajet liste représente une liste de trajets
-//Dans celle ci il est facile de récupérer le premier élément ainsi que le dernier
-//Les "for each" sont également facilités par des méthode (Premier et Suivant)
+// Trajet liste représente une liste de trajets
+// Dans celle ci il est facile de récupérer le premier élément ainsi que le dernier
+// On peut également supprimer une trajet via sont indice dans la liste
+// Les "for each" sont également facilités via la structure IElement
 //------------------------------------------------------------------------
 
 //Structure réprésentant un élément de la liste
@@ -40,9 +41,6 @@ typedef struct sIElement {
 
 	//Indice de l'itération
 	int pos;
-
-	//Constructeur de la structure
-	struct sIElement(Element* p, int pos);
 
 	//Opérateur de comparaison [utilisé pour l'itération]
 	bool operator!=(struct sIElement rhs);
@@ -66,32 +64,31 @@ public:
 		// Retourne le premier trajet
 		// Et initialise un foreach
 		// Contrat :
-		//
+		// null si la liste est vide
 
 		Element* PremierElement() const;
 		// Mode d'emploi :
-		// Retourne le premier trajet
-		// Et initialise un foreach
+		// Retourne le premier element de la liste
 		// Contrat :
-		//
+		// null si la liste est vide
 
 		const Trajet* Dernier() const;
 		// Mode d'emploi :
 		// Retourne le dernier trajet
 		// Contrat :
-		//
+		// null si la liste est vide
 
 		void Ajouter(const Trajet* trajet);
 		// Mode d'emploi :
 		// Ajoute un trajet dans la liste, en dernière position
 		// Contrat :
-		//
+		// {trajet} non null
 
 		void Supprimer(const int pos);
 		// Mode d'emploi :
-		// Ajoute un trajet dans la liste, en dernière position
+		// Supprime le (pos+1)ème Element de la liste
 		// Contrat :
-		//
+		// 0 <= pos < {length}
 
 		int Vide() const;
 		// Mode d'emploi :
@@ -125,7 +122,7 @@ public:
 
 	TrajetListe(TrajetListe* liste);
 	// Mode d'emploi :
-	// Constructeur de copy
+	// Constructeur de copie
 	// Contrat :
 	//
 
@@ -156,15 +153,9 @@ private:
 
 	//Taille de la liste (utile pour l'itération via foreach)
 	int length = 0;
-	
-	//Variables utilisées pour le foreach
-	//indice de l'élément retourné par 'suivant'
-	//int foreachIndex = -1;
-	//élément retourné par 'suivant'
-	//Element* foreachElement = nullptr;
 
 };
 
-//-------------------------------- Autres définitions dépendantes de <Ensemble>
+//-------------------------------- Autres définitions dépendantes de <TrajetListe>
 
-#endif // ENSEMBLE_H
+#endif // TRAJET_LISTE_H
