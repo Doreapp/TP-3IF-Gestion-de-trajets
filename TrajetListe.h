@@ -110,6 +110,8 @@ public:
 		// Contrat :
 		//
 
+		void deleteElements();
+
 	//------------------------------------------------- Surcharge d'opérateurs
 
 

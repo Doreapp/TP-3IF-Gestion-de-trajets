@@ -164,6 +164,17 @@ void sIElement::operator++()
 	p = p->suivant;
 }
 
+void TrajetListe::deleteElements() {
+	for (Element* curr = premier; curr != nullptr; curr = premier) {
+		premier = curr->suivant;
+
+		delete curr->contenu;
+		delete curr;
+	}
+	premier = nullptr;
+	length = 0;
+}
+
 //-------------------------------------------- Constructeurs - destructeur
 TrajetListe::TrajetListe()
 // Algorithme :
@@ -191,15 +202,15 @@ TrajetListe::~TrajetListe()
 // Detruit chaque élément de la liste
 {
 #ifdef MAP
-	cout << "Appel au destructeur de <EnTrajetListesemble>" << endl;
+	cout << "Appel au destructeur de <TrajetListe>" << endl;
 #endif
-	for (Element* curr = premier; curr != nullptr; curr = premier) {
+	/*for (Element* curr = premier; curr != nullptr; curr = premier) {
 		premier = curr->suivant;
 
 		delete curr->contenu;
 		delete curr;
 	}
-	premier = nullptr;
+	premier = nullptr;*/
 	//foreachElement = nullptr;
 	//foreachIndex = -1;
 } //----- Fin de ~TrajetListe

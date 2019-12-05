@@ -62,7 +62,7 @@ const void TrajetCompose::Affiche() const
 	int const length = liste->Taille();
 
 	for (const Trajet* t : *liste) {
-		t->Affiche;
+		t->Affiche();
 
 		//s'il ne s'agit pas du dernier element, ajoute un ' - ' à la fin
 		if (++index < length)
@@ -134,6 +134,7 @@ TrajetCompose::~TrajetCompose()
 #ifdef MAP
 	cout << "Appel au destructeur de <TrajetCompose>" << endl;
 #endif
+	liste->deleteElements();
 	delete liste;
 } //----- Fin de ~TrajetCompose
 

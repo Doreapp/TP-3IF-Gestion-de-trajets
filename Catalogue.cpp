@@ -193,7 +193,7 @@ Catalogue::~Catalogue()
 #ifdef MAP
 	cout << "Appel au destructeur de <Catalogue>" << endl;
 #endif
-
+	trajets->deleteElements();
 	delete trajets;
 } //----- Fin de ~Catalogue
 
