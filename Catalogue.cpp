@@ -2,8 +2,8 @@
 						   Catalogue  -  description
 							 -------------------
 	début                : 22/11/2019
-	copyright            : (C) 2019-2020 par CARREAU Damien
-	e-mail               : carreau.damien@gmail.com
+	copyright            : (C) 2019-2020 par CARREAU Damien et MANDIN Antoine
+	e-mail               : carreau.damien@gmail.com | antoine.mandin@insa-lyon.fr
 *************************************************************************/
 
 //---------- Réalisation de la classe <Catalogue> (fichier Catalogue.cpp) ------------
@@ -17,8 +17,6 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Catalogue.h"
-#include "Trajet.h"
-#include "TrajetCompose.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -27,16 +25,18 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 
 void Catalogue::Ajoute(const Trajet* trajet)
-// Algorithme : Ajoute un trajet au catalogue
-//
+// Algorithme : 
+// Ajoute {trajet} au catalogue (à la liste de trajets)
 {
 	trajets->Ajouter(trajet);
 }
 // ------ Fin de Ajoute
 
 const TrajetListe* Catalogue::TrouveTrajet(const char* depart, const char* arrivee) const
-// Algorithme : Trouve les trjats possibles pour aller de la ville de depart jusqu a la ville d arrivee
-//
+// Algorithme : 
+// Recherche les trajets directs allant de la ville {depart} à la ville {arrivee}
+// -> Parcours simple de la liste des trajets
+// Affiche 'Catalogue vide' si la liste de trajets est vide
 {
 	TrajetListe* res = new TrajetListe();
 
@@ -45,13 +45,10 @@ const TrajetListe* Catalogue::TrouveTrajet(const char* depart, const char* arriv
 		return res;
 	}
 	
-	Element* curr = trajets->PremierElement();
-	while (curr != nullptr) {
-		if (!strcmp(curr->contenu->GetVilleDepart(), depart) && 
-			!strcmp(curr->contenu->GetVilleArrivee(), arrivee))
-			res->Ajouter(curr->contenu);
-
-		curr = curr->suivant;
+	for (const Trajet* t : *trajets) {
+		if (!strcmp(t->GetVilleDepart(), depart) &&
+			!strcmp(t->GetVilleArrivee(), arrivee))
+			res->Ajouter(t);
 	}
 
 	return res;
@@ -60,64 +57,118 @@ const TrajetListe* Catalogue::TrouveTrajet(const char* depart, const char* arriv
 
 
 const TrajetListe* Catalogue::Recherche(const char* depart, const char* arrivee) const
-// Algorithme : Recherche 2
-//
+// Algorithme : 
+// Recherche avancée = Cherche toutes les possibles compositions de trajets permettant
+// d'arriver à la ville {arrivee} en partant de la ville {depart}
+// -> Voir RechercheDepart pour l'algorithme récursif utilisé
+// Affiche 'Catalogue Vide' si la liste des trajets est vide
 {
+	//Liste à remplir des trajets possibles
 	TrajetListe* res = new TrajetListe();
 
 	if(trajets->Vide()){
 		cout << "Catalogue vide\n";
 		return res;
 	}	
-	
-	Element* curr = trajets->PremierElement();
-	while (curr != nullptr){
-		if (!strcmp(curr->contenu->GetVilleDepart(), depart) && 
-			!strcmp(curr->contenu->GetVilleArrivee(), arrivee))
-			res->Ajouter(curr->contenu);
-		else if(!strcmp(curr->contenu->GetVilleDepart(),depart)){
-			const TrajetListe* inter = Recherche(curr->contenu->GetVilleArrivee(),arrivee);
-			if(!inter->Vide() && strcmp(curr->contenu->GetVilleArrivee(),depart)){
-				const TrajetCompose * tc = new TrajetCompose();	
-				tc->Ajoute(curr->contenu);
-				Element* elem = inter->PremierElement();
-				while(elem != nullptr){
-					tc->Ajoute(elem->contenu);
-					elem = elem->suivant;
-				}
-				delete elem;
-				res->Ajouter(tc);
-			}
-		}
-		curr = curr->suivant;
-	}
-	delete curr;
+
+	RechercheDepart(depart, arrivee, new TrajetListe(trajets), res);
+
 	return res;
 }
 // ---- Fin de Recherche
 
 
+void Catalogue::RechercheDepart(const char* depart, const char* arrivee, TrajetListe* into, TrajetListe* res, TrajetCompose* debut) const 
+// Algorithme :
+// 1) Nettoye la liste {into} des trajets finissant à la ville {arrivee} (pas de boucle)
+// 2) Pour chaques trajets de {into}
+//		S'il commence par {depart}
+//		a) s'il finit par {arrivee}, l'ajouter à la liste {res}
+//		b) sinon appeler RechercheDepart avec {depart} vallant la ville d'arrivée du trajet en question
+{
+	// Supprimer ceux qui finissent par depart :
+	// taille de la liste
+	int const length(into->Taille());
+	// indices de la liste à supprimés
+	int* indexes = new int[length];
+	// ittérateur
+	int i;
+
+	// remplissage du tableau de -1
+	for (i = 0; i < into->Taille(); i++)
+		indexes[i] = -1;
+	
+	// Ressence les indices de trajets finissant par depart (à supprimer)
+	i = 0;
+	int j = 0;
+	for (const Trajet* t : *into) {
+		if (!strcmp(t->GetVilleArrivee(), depart) && i < length) {
+			indexes[i++] = j--; //enregistre puis décrémente j, 
+			//car une fois une fois un trajet supprimé, le trajet suivant à supprimer
+			//sera 1 indice plus avant et de même pour les suivants
+		}
+		j++;
+	}
+
+	//	Supprimer réellement les trajets
+	for (i = 0; i < length && indexes[i] != -1; i++) {
+		into->Supprimer(indexes[i]);
+	}
+
+	//Pour chaque trajet de {into}
+	for (const Trajet* trajet : *into) 
+	{
+		// S'il commence par {depart}
+		if (!strcmp(trajet->GetVilleDepart(), depart)) 
+		{
+			// s'il fini par {arrivee}
+			if (!strcmp(trajet->GetVilleArrivee(), arrivee)) 
+			{
+				// On l'ajoute 
+				if(debut == nullptr) // si debut null (pas de trajet avant necessaire pour arriver à {depart})
+					res->Ajouter(trajet);
+				else { //sinon ajoute un trajet composé vallant {debut + trajet}
+					TrajetCompose* found = new TrajetCompose(debut);
+					found->Ajoute(trajet);
+					res->Ajouter(found);
+				}
+			}
+			//sinon
+			else 
+			{
+				//Initalise ou incrément un trajet composé avec {trajet}
+				TrajetCompose* found; 
+				if (debut != nullptr)
+					found = new TrajetCompose(debut);
+				else
+					found = new TrajetCompose();
+
+				found->Ajoute(trajet);
+
+				//Recherche récursivement
+				RechercheDepart(trajet->GetVilleArrivee(), arrivee, new TrajetListe(into), res, found);
+			}
+		}
+	}
+}
+
+
 const void Catalogue::Affiche() const
-// Algorithme : Affiche les trajets du catalogue dans le terminal
-//
+// Algorithme : 
+// Affiche les trajets du catalogue dans le terminal
 {
 	if (trajets->Vide()) {
-		cout << "Catalogue vide";
+		cout << "Catalogue vide" << endl;
 		return;
 	}
 
-	Element* curr = trajets->PremierElement();
 	int i = 1;
-	while (curr != nullptr) {
-		cout << i << " : ";
-		curr->contenu->Affiche();
-		i++;
-
-		curr = curr->suivant;
+	for (const Trajet* t : *trajets) {
+		cout << i++ << " : ";
+		t->Affiche();
 		cout << endl;
 	}
-}
-// ----- Fin de Affichage
+}// ----- Fin de Affichage
 
 //----------------------------------------------------- Méthodes privés
 

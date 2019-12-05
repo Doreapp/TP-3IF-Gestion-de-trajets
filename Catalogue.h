@@ -12,6 +12,8 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include "TrajetListe.h"
+#include "TrajetCompose.h"
+#include "Trajet.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -32,51 +34,58 @@ public:
 
 	const void Affiche() const;
 	// Mode d'emploi :
-	//Affiche le catalogue sur le terminal
-	//
+	// Affiche le catalogue sur le terminal
 	// Contrat :
 	//
 
 	void Ajoute(const Trajet* trajet);
 	// Mode d'emploi :
-	// Ajoute un trajet au catalogue (à la liste)
-//
+	// Ajoute un trajet au catalogue
 	// Contrat :
 	//
 
 	const TrajetListe* TrouveTrajet(const char* depart, const char* arrivee) const;
 	// Mode d'emploi :
-	// Effectue une recherche des trajets d'une ville depart vers une autre arrivee et renvoi un tableau avec tout les trajets trouvés (dans le catalogue)
-//
+	// Effectue une recherche des trajets d'une ville depart vers une autre arrivee et 
+	// renvoi un tableau avec tout les trajets trouvés (dans le catalogue)
+	// [RECHERCHE CLASSIQUE]
 	// Contrat :
-	//
+	// {depart} et {arrivee} non null
 
 	const TrajetListe* Recherche(const char* depart, const char* arrivee) const;
-	//Mode d'emploi :
+	// Mode d'emploi :
 	// Effectue une recherche des trajets d'une ville depart vers une ville arrivee, les composition de trajets sont possibles
-	//
-	//Contrat :
+	// [RECHERCHE AVANCEE]
+	// Contrat :
+	// {depart} et {arrivee} non null
 
 //-------------------------------------------- Constructeurs - destructeur
 
 	Catalogue();
 	// Mode d'emploi :
 	// Instancie un catalogue (alloue l'espace mémoire pour la liste)
-	//
 	// Contrat :
 	//
 
 	virtual ~Catalogue();
 	// Mode d'emploi :
 	// Libère l'espace mémoire utiliser par le catalogue
-	//
 	// Contrat :
 	//
 
 //------------------------------------------------------------------ PRIVE
 
 private:
-	//----------------------------------------------------- Méthodes protégées
+//----------------------------------------------------- Méthodes protégées
+	void RechercheDepart(const char* depart, const char* arrivee, TrajetListe* into, TrajetListe* res, 
+		TrajetCompose* debut = nullptr) const;
+	// Mode d'emploi :
+	// recherche un trajet (possiblement composé) entre les villes {depart} et {arrivee}
+	// en utilisant les trajets contenus dans {into} et stockant les résultats dans {res}
+	// {debut} représente le trajet fait pour atteindre la ville {depart}
+	// {debut} est null si {depart} est le point initial du trajet recherché
+	// Contrat :
+	// depart, arrivee, into et res non null
 
 
 //----------------------------------------------------- Attributs protégés

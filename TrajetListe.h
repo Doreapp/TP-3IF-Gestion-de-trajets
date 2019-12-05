@@ -33,6 +33,27 @@ typedef struct structElement {
 	struct structElement* suivant;
 } Element;
 
+//Structure utilisé pour les foreach (élément de l'itération)
+typedef struct sIElement {
+	//Contenu de l'itération
+	Element* p;
+
+	//Indice de l'itération
+	int pos;
+
+	//Constructeur de la structure
+	struct sIElement(Element* p, int pos);
+
+	//Opérateur de comparaison [utilisé pour l'itération]
+	bool operator!=(struct sIElement rhs);
+
+	//Opérateur de valeur [utilisé pour l'itération]
+	const Trajet* operator*();
+
+	//Opérateur d'incrémentation [utilisé pour l'itération]
+	void operator++();
+} IElement;
+
 class TrajetListe
 {
 	//----------------------------------------------------------------- PUBLIC
@@ -66,12 +87,31 @@ public:
 		// Contrat :
 		//
 
+		void Supprimer(const int pos);
+		// Mode d'emploi :
+		// Ajoute un trajet dans la liste, en dernière position
+		// Contrat :
+		//
+
 		int Vide() const;
 		// Mode d'emploi :
 		// Retourne 1 (true) si la liste est vide, 0 (false) sinon
 		// Contrat :
 		//
 
+		int Taille() const;
+
+		IElement begin() const;
+		// Mode d'emploi :
+		// [Méthode système] utilisée pour initialiser un foreach
+		// Contrat :
+		//
+
+		IElement end() const;
+		// Mode d'emploi :
+		// [Méthode système] utilisée pour finir correctement un foreach
+		// Contrat :
+		//
 
 	//------------------------------------------------- Surcharge d'opérateurs
 
@@ -80,6 +120,12 @@ public:
 	TrajetListe();
 	// Mode d'emploi :
 	// Constructeur simple d'une liste vide
+	// Contrat :
+	//
+
+	TrajetListe(TrajetListe* liste);
+	// Mode d'emploi :
+	// Constructeur de copy
 	// Contrat :
 	//
 
@@ -107,6 +153,9 @@ private:
 
 	//Premier élément de la liste (si vide nullptr)
 	Element* premier = nullptr;
+
+	//Taille de la liste (utile pour l'itération via foreach)
+	int length = 0;
 	
 	//Variables utilisées pour le foreach
 	//indice de l'élément retourné par 'suivant'

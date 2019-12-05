@@ -26,42 +26,48 @@
 
 class TrajetCompose : public Trajet
 {
-	//----------------------------------------------------------------- PUBLIC
+//----------------------------------------------------------------- PUBLIC
 
 public:
-	//----------------------------------------------------- Méthodes publiques
+//----------------------------------------------------- Méthodes publiques
 	char* GetVilleDepart() const;
 	char* GetVilleArrivee() const;
 	const void Affiche() const;
 
-	void Ajoute(Trajet* trajet);
-		// Mode d'emploi :
-		// Ajoute le trajet à la liste des trajets 
-		// Contrat :
-		//
+	void Ajoute(const Trajet* trajet);
+	// Mode d'emploi :
+	// Ajoute le trajet à la liste des trajets 
+	// Contrat :
+	// trajet non null
 
 
-	//------------------------------------------------- Surcharge d'opérateurs
+//------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
 	TrajetCompose();
 	// Mode d'emploi :
 	// Constructeur vide
 	// Contrat :
-	//
+	// 
+
+	TrajetCompose(TrajetCompose* src);
+	// Mode d'emploi :
+	// Constructeur de copie, possède les mêmes trajets (par adresses)
+	// Contrat :
+	// 
 
 	virtual ~TrajetCompose();
 	// Mode d'emploi :
-	// delete les trajets internes
+	// Supprime les trajets internes
 	// Contrat :
 	//
 
 //------------------------------------------------------------------ PRIVE
 
 protected:
-	//----------------------------------------------------- Méthodes protégées
+//----------------------------------------------------- Méthodes protégées
 
-	//----------------------------------------------------- Attributs protégés
+//----------------------------------------------------- Attributs protégés
 
 private:
 	//----------------------------------------------------- Méthodes privées
