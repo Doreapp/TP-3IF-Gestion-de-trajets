@@ -1,1 +1,10 @@
 Ajout 0 A B o Ajout 0 B C o Ajout 0 C D o Ajout 0 D A o Ajout 0 E B o Ajout 0 E F o Ajout 0 D B o Ajout 0 A E o
+
+catalogue->Ajoute(new TrajetSimple("A", "B", "o"));
+	catalogue->Ajoute(new TrajetSimple("B", "C", "o"));
+	catalogue->Ajoute(new TrajetSimple("C", "D", "o"));
+	catalogue->Ajoute(new TrajetSimple("D", "A", "o"));
+	catalogue->Ajoute(new TrajetSimple("E", "B", "o"));
+	catalogue->Ajoute(new TrajetSimple("E", "F", "o"));
+	catalogue->Ajoute(new TrajetSimple("D", "B", "o"));
+	catalogue->Ajoute(new TrajetSimple("A", "E", "o"));
