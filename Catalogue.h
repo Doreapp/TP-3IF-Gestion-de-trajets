@@ -78,7 +78,7 @@ public:
 private:
 //----------------------------------------------------- Méthodes protégées
 	void RechercheDepart(const char* depart, const char* arrivee, TrajetListe* into, TrajetListe* res, 
-		TrajetCompose* debut = nullptr) const;
+		TrajetListe* debut = nullptr) const;
 	// Mode d'emploi :
 	// recherche un trajet (possiblement composé) entre les villes {depart} et {arrivee}
 	// en utilisant les trajets contenus dans {into} et stockant les résultats dans {res}
