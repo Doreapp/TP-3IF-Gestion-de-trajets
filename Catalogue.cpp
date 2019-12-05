@@ -78,7 +78,8 @@ const TrajetListe* Catalogue::Recherche(const char* depart, const char* arrivee)
 // ---- Fin de Recherche
 
 
-void Catalogue::RechercheDepart(const char* depart, const char* arrivee, TrajetListe* into, TrajetListe* res, TrajetCompose* debut) const 
+void Catalogue::RechercheDepart(const char* depart, const char* arrivee, TrajetListe* into, 
+	TrajetListe* res, TrajetCompose* debut) const 
 // Algorithme :
 // 1) Nettoye la liste {into} des trajets finissant à la ville {arrivee} (pas de boucle)
 // 2) Pour chaques trajets de {into}
@@ -115,6 +116,8 @@ void Catalogue::RechercheDepart(const char* depart, const char* arrivee, TrajetL
 		into->Supprimer(indexes[i]);
 	}
 
+	delete[] indexes;
+
 	//Pour chaque trajet de {into}
 	for (const Trajet* trajet : *into) 
 	{
@@ -125,8 +128,11 @@ void Catalogue::RechercheDepart(const char* depart, const char* arrivee, TrajetL
 			if (!strcmp(trajet->GetVilleArrivee(), arrivee)) 
 			{
 				// On l'ajoute 
-				if(debut == nullptr) // si debut null (pas de trajet avant necessaire pour arriver à {depart})
-					res->Ajouter(trajet);
+				if (debut == nullptr) { // si debut null (pas de trajet avant necessaire pour arriver à {depart})
+					TrajetCompose* aAjouter = new TrajetCompose();
+					aAjouter->Ajoute(trajet);
+					res->Ajouter(aAjouter);
+				}
 				else { //sinon ajoute un trajet composé vallant {debut + trajet}
 					TrajetCompose* found = new TrajetCompose(debut);
 					found->Ajoute(trajet);
@@ -150,6 +156,7 @@ void Catalogue::RechercheDepart(const char* depart, const char* arrivee, TrajetL
 			}
 		}
 	}
+	delete into;
 }
 
 
