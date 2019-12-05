@@ -129,30 +129,29 @@ void Catalogue::RechercheDepart(const char* depart, const char* arrivee, TrajetL
 			{
 				// On l'ajoute 
 				if (debut == nullptr) { // si debut null (pas de trajet avant necessaire pour arriver à {depart})
-					TrajetCompose* aAjouter = new TrajetCompose();
-					aAjouter->Ajoute(trajet);
-					res->Ajouter(aAjouter);
+					res->Ajouter(trajet);
 				}
 				else { //sinon ajoute un trajet composé vallant {debut + trajet}
-					TrajetCompose* found = new TrajetCompose(debut);
-					found->Ajoute(trajet);
-					res->Ajouter(found);
+					//TrajetCompose* found = new TrajetCompose(debut);
+					//found->Ajoute(trajet);
+					res->Ajouter(trajet);
 				}
 			}
 			//sinon
 			else 
 			{
 				//Initalise ou incrément un trajet composé avec {trajet}
-				TrajetCompose* found; 
-				if (debut != nullptr)
-					found = new TrajetCompose(debut);
-				else
-					found = new TrajetCompose();
+				//TrajetCompose* found; 
+				//if (debut != nullptr)
+				//	found = new TrajetCompose(debut);
+				//else
+				//	found = new TrajetCompose();
 
-				found->Ajoute(trajet);
+				//found->Ajoute(trajet);
 
 				//Recherche récursivement
-				RechercheDepart(trajet->GetVilleArrivee(), arrivee, new TrajetListe(into), res, found);
+				res->Ajouter(trajet);
+				RechercheDepart(trajet->GetVilleArrivee(), arrivee, new TrajetListe(into), res);
 			}
 		}
 	}
