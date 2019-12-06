@@ -97,6 +97,8 @@ public:
 		//
 
 		int Taille() const;
+		// Mode d'emploi :
+		// Retourne la taille de la liste
 
 		IElement begin() const;
 		// Mode d'emploi :
