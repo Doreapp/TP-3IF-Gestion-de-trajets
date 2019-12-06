@@ -197,7 +197,8 @@ Catalogue::Catalogue()
 
 Catalogue::~Catalogue()
 // Algorithme :
-//
+// Appelle le destructeur de chaque trajet du catalogue
+// Libère l'espace mémoire alloué au catalogue
 {
 #ifdef MAP
 	cout << "Appel au destructeur de <Catalogue>" << endl;
