@@ -113,6 +113,8 @@ public:
 		//
 
 		void deleteElements();
+		// Mode d'emploi :
+		// Appelle le destructeur de chaque trajet de la liste
 
 	//------------------------------------------------- Surcharge d'opérateurs
 
