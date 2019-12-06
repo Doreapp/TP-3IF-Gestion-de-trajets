@@ -31,8 +31,19 @@ public:
 	//----------------------------------------------------- Méthodes publiques
 	//----------------------------------------------------Méthodes surchargées
 	char* GetVilleDepart() const;
+	// Mode d'emploi :
+	// Renvoi la ville de départ du trajet
+	// Contrat :
+	
 	char* GetVilleArrivee() const;
+	// Mode d'emploi :
+	// Renvoi la ville d'arrivé du trajet
+	// Contrat :
+	
 	const void Affiche() const;
+	// Mode d'emploi :
+	// Affiche le trajet
+	// Contrat :
 
 	//------------------------------------------------- Surcharge d'opérateurs
 
