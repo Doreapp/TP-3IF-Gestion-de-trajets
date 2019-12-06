@@ -185,7 +185,7 @@ const void Catalogue::Affiche() const
 
 Catalogue::Catalogue()
 // Algorithme :
-//
+// Créer une liste de trajets, correspondant au catalogue
 {
 #ifdef MAP
 	cout << "Appel au constructeur de <Catalogue>" << endl;
