@@ -26,21 +26,21 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 char* TrajetSimple::GetVilleDepart() const
 // Algorithme :
-//
+// Renvoi la ville de départ du trajet
 {
 	return villeDepart;
 } //----- Fin de GetVilleDepart
 
 char* TrajetSimple::GetVilleArrivee() const
 // Algorithme :
-//
+// Renvoi la ville d'arrivé du trajet
 {
 	return villeArrivee;
 } //----- Fin de GetVilleDepart
 
 const void TrajetSimple::Affiche() const
 // Algorithme :
-// Trajet de ... à .... en ...
+// Affiche le trajet
 {
 	cout << "Trajet de " << villeDepart << " a " << villeArrivee << " en " << transport;
 }
