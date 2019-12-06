@@ -170,6 +170,9 @@ void sIElement::operator++()
 }
 
 void TrajetListe::deleteElements() {
+// Algorithme :
+// libère l'espace mémoire de tout les trajets de la liste
+
 	for (const Trajet* t : *this)
 		delete t;
 }
