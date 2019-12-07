@@ -1,9 +1,9 @@
 /*******************************************************************************
-			  main - description
-			  ------------------
-	début		: 22/11/2019
-	copyright            : (C) 2019/2020 par Carreau Damien et Mandin Antoine
-	e-mail               : antoine.mandin@insa-lyon.fr / damien.carreau@insa-lyon.fr
+						   main  -  Fichier principale de l'application
+							 -------------------
+	début                : 22/11/2019
+	copyright            : (C) 2019-2020 par CARREAU Damien et MANDIN Antoine
+	e-mail               : carreau.damien@gmail.com | antoine.mandin@insa-lyon.fr
 ********************************************************************************/
 
 //------------Réalisation de la classe <main> (fichier main.cpp) ---------------
@@ -80,10 +80,10 @@ int main()
 				cin >> ville_arrive;
 				cout << "Entrez votre moyen de transport\n";
 				cin >> moyen;
-				
+
 				Trajet* trajet = new TrajetSimple(ville_depart, ville_arrive, moyen);
 				catalogue->Ajoute(trajet);
-				
+
 				cout << "Votre trajet a bien été ajouté\n";
 			}
 			else if (!strcmp(lecture, "1")) {
@@ -94,6 +94,7 @@ int main()
 
 				do {
 					if (!strcmp(lecture, "0")) {
+#pragma warning(suppress : 4996)
 						strcpy(ville_depart, ville_arrive);
 					}
 
@@ -140,7 +141,7 @@ int main()
 				recherche = catalogue->Recherche(ville_depart, ville_arrive);
 				int i = 1;
 				for (const Trajet* t : *recherche) {
-					if(!strcmp(ville_depart, t->GetVilleDepart()))
+					if (!strcmp(ville_depart, t->GetVilleDepart()))
 						cout << i++ << " : ";
 
 					t->Affiche();
