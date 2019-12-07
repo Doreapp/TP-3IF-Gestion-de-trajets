@@ -11,8 +11,6 @@
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
-#include <iostream>
-using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Trajet.h"
@@ -35,7 +33,7 @@ Trajet::~Trajet()
 #ifdef MAP
 	cout << "Appel au destructeur de <Trajet>" << endl;
 #endif
-} //----- Fin de ~Ensemble
+} //----- Fin de ~Trajet
 
 //------------------------------------------------------------------ PRIVE
 
