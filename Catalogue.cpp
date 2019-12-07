@@ -39,7 +39,7 @@ const TrajetListe* Catalogue::TrouveTrajet(const char* depart, const char* arriv
 {
 	TrajetListe* res = new TrajetListe();
 
-	if (trajets->Vide()) {
+	if (!trajets->Taille()) {
 		cout << "Catalogue vide\n";
 		return res;
 	}
@@ -64,7 +64,7 @@ const TrajetListe* Catalogue::Recherche(const char* depart, const char* arrivee)
 	//Liste à remplir des trajets possibles
 	TrajetListe* res = new TrajetListe();
 
-	if(trajets->Vide()){
+	if(!trajets->Taille()){
 		cout << "Catalogue vide\n";
 		return res;
 	}	
@@ -155,7 +155,7 @@ void Catalogue::Affiche() const
 // Algorithme : 
 // Affiche les trajets du catalogue dans le terminal
 {
-	if (trajets->Vide()) {
+	if (!trajets->Taille()) {
 		cout << "Catalogue vide" << endl;
 		return;
 	}
