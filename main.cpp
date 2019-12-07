@@ -152,7 +152,7 @@ int main()
 				}
 
 			}
-			if (recherche == nullptr || recherche->Vide()) {
+			if (recherche == nullptr || !recherche->Taille()) {
 				cout << "Trajet non trouvé\n";
 			}
 			delete recherche;
