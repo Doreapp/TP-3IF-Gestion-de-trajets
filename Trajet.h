@@ -18,49 +18,41 @@
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Trajet>
-//
-//
+// Représente un trajet générique
+// Classe abstraite liée à une ville de départ et une ville d'arrivée
 //------------------------------------------------------------------------
 
 class Trajet
 {
-	//----------------------------------------------------------------- PUBLIC
-
+//----------------------------------------------------------------- PUBLIC
 public:
-	//----------------------------------------------------- Méthodes publiques
+//----------------------------------------------------- Méthodes publiques
 	virtual char* GetVilleDepart() const = 0;
 	// Mode d'emploi :
 	// Retourne la ville de départ du trajet sous forme de tableau de caractère
-	// Retourne NULL si méthode non surchargée (implémentée par une classe enfant)
+	// Méthode abstraite à implémenter par les classes enfants
 	// Contrat : 
-	// 
 
 	virtual char* GetVilleArrivee() const = 0;
 	// Mode d'emploi :
 	// Retourne la ville d'arrivée du trajet sous forme de tableau de caractère
-	// Retourne NULL si méthode non surchargée (implémentée par une classe enfant)
+	// Méthode abstraite à implémenter par les classes enfants
 	// Contrat : 
-	// 
 
-	virtual const void Affiche() const = 0;
+	virtual void Affiche() const = 0;
 	// Mode d'emploi :
 	// Affiche le trajet 
-	// Affiche '{Non implémentée}' si méthode non surchargée (implémentée par une classe enfant)
+	// Méthode abstraite à implémenter par les classes enfants
 	// Contrat : 
-	// 
 
-
-	//------------------------------------------------- Surcharge d'opérateurs
-
+//------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-	//PAS DE CONSTRUCTEUR PUBLIC
+	//PAS DE CONSTRUCTEUR PUBLIC 
 
 	virtual ~Trajet();
 	// Mode d'emploi :
-	//
 	// Contrat :
-	//
 
 //------------------------------------------------------------------ PRIVE
 
