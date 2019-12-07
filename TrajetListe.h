@@ -1,9 +1,9 @@
 /*************************************************************************
 						   Trajet Liste -  Représente une liste de trajets
 							 -------------------
-	début                : 22/11/2019 - /
-	copyright            : (C) 2019/2020 par Carreau Damien et Mandin Antoine
-	e-mail               : antoine.mandin@insa-lyon.fr / damien.carreau@insa-lyon.fr
+	début                : 22/11/2019
+	copyright            : (C) 2019-2020 par CARREAU Damien et Antoine MANDIN
+	e-mail               : carreau.damien@gmail.com | antoine.mandin@insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <TrajetListe> (fichier TrajetListe.h) ----------------
@@ -25,58 +25,62 @@
 // Les "for each" sont également facilités via la structure IElement
 //------------------------------------------------------------------------
 
-//Structure réprésentant un élément de la liste
+//---------------------------------------------------- Structures internes 
 typedef struct structElement {
-	//Contenu de l'element : un trajet
+//-------------------------------------------------------------- Attributs
 	const Trajet* contenu;
+	//Contenu de l'element : un trajet
 
-	//Element suivant 
 	struct structElement* suivant;
+	//Element suivant 
 } Element;
+//Structure réprésentant un élément de la liste
 
-//Structure utilisé pour les foreach (élément de l'itération)
 typedef struct sIElement {
-	//Contenu de l'itération
+//-------------------------------------------------------------- Attributs
 	Element* p;
+	//Contenu de l'itération
 
-	//Indice de l'itération
 	int pos;
+	//Indice de l'itération
 
 //------------------------------------------------ Surcharges d'opérateurs
-	//Opérateur de comparaison 	[utilisé pour l'itération]
 	bool operator!=(struct sIElement rhs);
+	//Opérateur de comparaison 	[utilisé pour l'itération]
 
-	//Opérateur de valeur 		[utilisé pour l'itération]
 	const Trajet* operator*();
+	//Opérateur de valeur 		[utilisé pour l'itération]
 
-	//Opérateur d'incrémentation 	[utilisé pour l'itération]
 	void operator++();
+	//Opérateur d'incrémentation 	[utilisé pour l'itération]
 } IElement;
+//Structure utilisé pour les foreach (élément de l'itération)
 
+//------------------------------------------------------ Classe principale
 class TrajetListe
 {
 //----------------------------------------------------------------- PUBLIC
 public:
 //----------------------------------------------------- Méthodes publiques
-		const Trajet* Premier() const;
+		const Trajet* GetPremier() const;
 		// Mode d'emploi :
 		// Retourne le premier trajet
 		// Contrat :
 		// null si la liste est vide
 
-		const Trajet* Dernier() const;
+		const Trajet* GetDernier() const;
 		// Mode d'emploi :
 		// Retourne le dernier trajet
 		// Contrat :
 		// null si la liste est vide
 
-		void Ajouter(const Trajet* trajet);
+		void Ajoute(const Trajet* trajet);
 		// Mode d'emploi :
 		// Ajoute un trajet dans la liste, en dernière position
 		// Contrat :
 		// {trajet} non null
 
-		void Supprimer(const int pos);
+		void Supprime(const int pos);
 		// Mode d'emploi :
 		// Supprime le (pos+1)ème Element de la liste
 		// Contrat :
@@ -97,7 +101,7 @@ public:
 		// [Méthode système] utilisée pour finir correctement un foreach
 		// Contrat :
 
-		void deleteElements();
+		void LibereElements();
 		// Mode d'emploi :
 		// Appelle le destructeur de chaque trajet de la liste
 
@@ -124,25 +128,23 @@ public:
 //------------------------------------------------------------------ PRIVE
 
 protected:
-	//----------------------------------------------------- Méthodes protégées
+//----------------------------------------------------- Méthodes protégées
 
-	//----------------------------------------------------- Attributs protégés
+//----------------------------------------------------- Attributs protégés
 	
 
 private:
-	//----------------------------------------------------- Méthodes privée
+//----------------------------------------------------- Méthodes privée
 
-	//----------------------------------------------------- Attributs privée
-	
-	//Dernier élément de la liste (si vide nullptr)
+//----------------------------------------------------- Attributs privée
 	Element* dernier = nullptr;
+	//Dernier élément de la liste (si vide nullptr)
 
-	//Premier élément de la liste (si vide nullptr)
 	Element* premier = nullptr;
+	//Premier élément de la liste (si vide nullptr)
 
-	//Taille de la liste (utile pour l'itération via foreach)
 	int length = 0;
-
+	//Taille de la liste (utile pour l'itération via foreach)
 };
 
 //-------------------------------- Autres définitions dépendantes de <TrajetListe>

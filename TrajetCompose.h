@@ -1,9 +1,9 @@
 /*************************************************************************
 						   Trajet Composé  -  Implémentation d'un trajet simple entre 2 villes
 							 -------------------
-	début                : 22/11/2019 - /
-	copyright            : (C) 2019/2020 par Carreau Damien et Mandin Antoine
-	e-mail               : antoine.mandin@insa-lyon.fr / damien.carreau@insa-lyon.fr
+	début                : 22/11/2019
+	copyright            : (C) 2019-2020 par CARREAU Damien et Antoine MANDIN
+	e-mail               : carreau.damien@gmail.com | antoine.mandin@insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <TrajetCompose> (fichier TrajetCompose.h) ----------------
@@ -79,9 +79,9 @@ protected:
 //----------------------------------------------------- Attributs protégés
 
 private:
-	//----------------------------------------------------- Méthodes privées
+//----------------------------------------------------- Méthodes privées
 
-	//----------------------------------------------------- Attributs privés
+//----------------------------------------------------- Attributs privés
 	TrajetListe* liste;
 	//liste des trajets internes
 };

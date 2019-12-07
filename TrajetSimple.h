@@ -1,9 +1,9 @@
 /*************************************************************************
 						   Trajet Simple  -  Implémentation d'un trajet simple entre 2 villes
 							 -------------------
-	début                : 22/11/2019 - /
-	copyright            : (C) 2019/2020 par Carreau Damien et Mandin Antoine
-	e-mail               : antoine.mandin@insa-lyon.fr / damien.carreau@insa-lyon.fr
+	début                : 22/11/2019
+	copyright            : (C) 2019-2020 par CARREAU Damien et Antoine MANDIN
+	e-mail               : carreau.damien@gmail.com | antoine.mandin@insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <TrajetSimple> (fichier TrajetSimple.h) ----------------
@@ -63,14 +63,14 @@ public:
 //------------------------------------------------------------------ PRIVE
 
 protected:
-	//----------------------------------------------------- Méthodes protégées
+//----------------------------------------------------- Méthodes protégées
 
-	//----------------------------------------------------- Attributs protégés
+//----------------------------------------------------- Attributs protégés
 
 private:
-	//----------------------------------------------------- Méthodes privées
+//----------------------------------------------------- Méthodes privées
 
-	//----------------------------------------------------- Attributs privés
+//----------------------------------------------------- Attributs privés
 	char* villeDepart;
 	//texte représentant le nom de la ville de départ du trajet
 

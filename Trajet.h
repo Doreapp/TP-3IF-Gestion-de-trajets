@@ -1,9 +1,9 @@
 /*************************************************************************
 						   Trajet  -  Classe représentant un trajet
 							 -------------------
-	début                : 22/11/2019 - /
-	copyright            : (C) 2019/2020 par Carreau Damien et Mandin Antoine
-	e-mail               : antoine.mandin@insa-lyon.fr / damien.carreau@insa-lyon.fr
+	début                : 22/11/2019
+	copyright            : (C) 2019-2020 par CARREAU Damien et Antoine MANDIN
+	e-mail               : carreau.damien@gmail.com | antoine.mandin@insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <Trajet> (fichier Trajet.h) ----------------

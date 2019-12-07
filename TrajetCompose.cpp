@@ -1,9 +1,9 @@
 /*************************************************************************
 						   Trajet Composé  -  Implémentation d'un trajet simple entre 2 villes
 							 -------------------
-	début                : 22/11/2019 - /
-	copyright            : (C) 2019/2020 par Carreau Damien et Mandin Antoine
-	e-mail               : antoine.mandin@insa-lyon.fr / damien.carreau@insa-lyon.fr
+	début                : 22/11/2019
+	copyright            : (C) 2019-2020 par CARREAU Damien et MANDIN Antoine
+	e-mail               : carreau.damien@gmail.com | antoine.mandin@insa-lyon.fr
 *************************************************************************/
 
 //---------- Réalisation de la classe <TrajetCompose> (fichier TrajetCompose.cpp) ------------
@@ -32,7 +32,7 @@ char* TrajetCompose::GetVilleDepart() const
 	if (!liste->Taille())
 		return nullptr;
 
-	return liste->Premier()->GetVilleDepart();
+	return liste->GetPremier()->GetVilleDepart();
 } //----- Fin de GetVilleDepart
 
 char* TrajetCompose::GetVilleArrivee() const
@@ -43,7 +43,7 @@ char* TrajetCompose::GetVilleArrivee() const
 	if (!liste->Taille())
 		return nullptr;
 
-	return liste->Dernier()->GetVilleArrivee();
+	return liste->GetDernier()->GetVilleArrivee();
 } //----- Fin de GetVilleArrivee
 
 void TrajetCompose::Affiche() const
@@ -79,13 +79,13 @@ void TrajetCompose::Ajoute(const Trajet* trajet)
 // de départ du trajet à ajouter
 {
 	if (!liste->Taille()) {
-		liste->Ajouter(trajet);
+		liste->Ajoute(trajet);
 		return;
 	}
 
-	if (strcmp(liste->Dernier()->GetVilleArrivee(), trajet->GetVilleDepart())) {
+	if (strcmp(liste->GetDernier()->GetVilleArrivee(), trajet->GetVilleDepart())) {
 		cerr << "Erreur a l'ajout, les villes ne correspondent pas ("
-			<< liste->Dernier()->GetVilleArrivee()
+			<< liste->GetDernier()->GetVilleArrivee()
 			<< " != "
 			<< trajet->GetVilleDepart()
 			<< ")"
@@ -93,7 +93,7 @@ void TrajetCompose::Ajoute(const Trajet* trajet)
 		return;
 	}
 
-	liste->Ajouter(trajet);
+	liste->Ajoute(trajet);
 }//----- Fin de Ajoute
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -127,7 +127,7 @@ TrajetCompose::~TrajetCompose()
 #ifdef MAP
 	cout << "Appel au destructeur de <TrajetCompose>" << endl;
 #endif
-	liste->deleteElements();
+	liste->LibereElements();
 	delete liste;
 } //----- Fin de ~TrajetCompose
 

@@ -1,5 +1,5 @@
 /*************************************************************************
-						   Catalogue  -  description
+						   Catalogue  -  Représente le catalogue des trajets disponible
 							 -------------------
 	début                : 22/11/2019
 	copyright            : (C) 2019-2020 par CARREAU Damien et MANDIN Antoine
@@ -28,7 +28,7 @@ void Catalogue::Ajoute(const Trajet* trajet)
 // Algorithme : 
 // Ajoute {trajet} au catalogue (à la liste de trajets)
 {
-	trajets->Ajouter(trajet);
+	trajets->Ajoute(trajet);
 }// ------ Fin de Ajoute
 
 const TrajetListe* Catalogue::TrouveTrajet(const char* depart, const char* arrivee) const
@@ -47,11 +47,11 @@ const TrajetListe* Catalogue::TrouveTrajet(const char* depart, const char* arriv
 	for (const Trajet* t : *trajets) {
 		if (!strcmp(t->GetVilleDepart(), depart) &&
 			!strcmp(t->GetVilleArrivee(), arrivee))
-			res->Ajouter(t);
+			res->Ajoute(t);
 	}
 
 	return res;
-}// ----- Fin de trouve trajet
+}// ----- Fin de TrouveTrajet
 
 
 const TrajetListe* Catalogue::Recherche(const char* depart, const char* arrivee) const
@@ -72,7 +72,7 @@ const TrajetListe* Catalogue::Recherche(const char* depart, const char* arrivee)
 	RechercheDepart(depart, arrivee, new TrajetListe(trajets), res);
 
 	return res;
-}// ---- Fin de Recherche
+}//----- Fin de Recherche
 
 
 void Catalogue::RechercheDepart(const char* depart, const char* arrivee, TrajetListe* into, 
@@ -107,7 +107,7 @@ void Catalogue::RechercheDepart(const char* depart, const char* arrivee, TrajetL
 
 	// Supprime réellement les trajets
 	for (i = 0; i < length && indexes[i] != -1; i++) {
-		into->Supprimer(indexes[i]);
+		into->Supprime(indexes[i]);
 	}
 
 	delete[] indexes;
@@ -120,12 +120,12 @@ void Catalogue::RechercheDepart(const char* depart, const char* arrivee, TrajetL
 			if (!strcmp(trajet->GetVilleArrivee(), arrivee)) 
 			{
 				if (debut == nullptr) { // si debut null (pas de trajet avant necessaire pour arriver à {depart})
-					res->Ajouter(trajet);
+					res->Ajoute(trajet);
 				}
 				else { //sinon ajoute un trajet composé vallant {debut + trajet}
 					for (const Trajet* t : *debut)
-						res->Ajouter(t);
-					res->Ajouter(trajet);
+						res->Ajoute(t);
+					res->Ajoute(trajet);
 				}
 			}
 			//sinon
@@ -138,7 +138,7 @@ void Catalogue::RechercheDepart(const char* depart, const char* arrivee, TrajetL
 				else
 					mDebut = new TrajetListe(debut);
 
-				mDebut->Ajouter(trajet);
+				mDebut->Ajoute(trajet);
 
 				//Recherche récursivement
 				RechercheDepart(trajet->GetVilleArrivee(), arrivee, new TrajetListe(into), res, mDebut);
@@ -166,7 +166,7 @@ void Catalogue::Affiche() const
 		t->Affiche();
 		cout << endl;
 	}
-}// ----- Fin de Affichage
+}// ----- Fin de Affiche
 
 //----------------------------------------------------- Méthodes privés
 
@@ -192,10 +192,9 @@ Catalogue::~Catalogue()
 #ifdef MAP
 	cout << "Appel au destructeur de <Catalogue>" << endl;
 #endif
-	trajets->deleteElements();
+	trajets->LibereElements();
 	delete trajets;
 } //----- Fin de ~Catalogue
-
 
 //------------------------------------------------------------------ PRIVE
 

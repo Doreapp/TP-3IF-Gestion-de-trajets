@@ -1,9 +1,9 @@
 /*************************************************************************
 						   Trajet Simple  -  Implémentation d'un trajet simple entre 2 villes
 							 -------------------
-	début                : 22/11/2019 - /
-	copyright            : (C) 2019/2020 par Carreau Damien et Mandin Antoine
-	e-mail               : antoine.mandin@insa-lyon.fr / damien.carreau@insa-lyon.fr
+	début                : 22/11/2019
+	copyright            : (C) 2019-2020 par CARREAU Damien et MANDIN Antoine
+	e-mail               : carreau.damien@gmail.com | antoine.mandin@insa-lyon.fr
 *************************************************************************/
 
 //---------- Réalisation de la classe <TrajetSimple> (fichier TrajetSimple.cpp) ------------
@@ -42,7 +42,7 @@ void TrajetSimple::Affiche() const
 // Affiche le trajet
 {
 	cout << "Trajet de " << villeDepart << " a " << villeArrivee << " en " << transport;
-}//----- fin de Affiche
+}//----- Fin de Affiche
 
 //------------------------------------------------- Surcharge d'opérateurs
 

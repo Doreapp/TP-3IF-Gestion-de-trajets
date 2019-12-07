@@ -69,7 +69,6 @@ public:
 	// Mode d'emploi :
 	// Libère l'espace mémoire utiliser par le catalogue
 	// Contrat :
-	//
 
 //------------------------------------------------------------------ PRIVE
 private:
