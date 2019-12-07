@@ -16,7 +16,6 @@
 using namespace std;
 
 //------------------------------------------------------ Include personnel
-#include "Trajet.h"
 #include "TrajetSimple.h"
 
 //------------------------------------------------------------- Constantes
@@ -43,17 +42,15 @@ const void TrajetSimple::Affiche() const
 // Affiche le trajet
 {
 	cout << "Trajet de " << villeDepart << " a " << villeArrivee << " en " << transport;
-}
-
+}//----- fin de Affiche
 
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
 
-
 TrajetSimple::TrajetSimple(const char* villeDepart, const char* villeArrivee, const char* transport) 
 // Algorithme :
-// copy pure et simple des valeurs
+// copie des textes {villeDepart}, {villeArrivee} et {transport}
 {
 #ifdef MAP
 	cout << "Appel au constructeur de <TrajetSimple>" << endl;
@@ -65,17 +62,16 @@ TrajetSimple::TrajetSimple(const char* villeDepart, const char* villeArrivee, co
 	strcpy(this->villeDepart, villeDepart);
 	strcpy(this->villeArrivee, villeArrivee);
 	strcpy(this->transport, transport);
-} //----- Fin de Ensemble
+} //----- Fin de TrajetSimple
 
 
 TrajetSimple::~TrajetSimple()
 // Algorithme :
-// Libère les différentes variable mémoire (3 char* ici)
+// Libère les différentes variables mémoire
 {
 #ifdef MAP
 	cout << "Appel au destructeur de <TrajetSimple>" << endl;
 #endif
-	
 	delete[] villeArrivee;
 	delete[] villeDepart;
 	delete[] transport;
