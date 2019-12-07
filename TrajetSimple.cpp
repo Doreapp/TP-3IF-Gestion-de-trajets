@@ -37,7 +37,7 @@ char* TrajetSimple::GetVilleArrivee() const
 	return villeArrivee;
 } //----- Fin de GetVilleDepart
 
-const void TrajetSimple::Affiche() const
+void TrajetSimple::Affiche() const
 // Algorithme :
 // Affiche le trajet
 {
