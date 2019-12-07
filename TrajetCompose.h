@@ -32,24 +32,24 @@ public:
 //----------------------------------------------------- Méthodes publiques
 	char* GetVilleDepart() const;
 	// Mode d'emploi :
-	// Renvoi la ville de départ du trajet
+	// [Méthode héritée de Trajet] Renvoi la ville de départ du trajet
 	// Contrat :
 	
 	char* GetVilleArrivee() const;
 	// Mode d'emploi :
-	// Renvoi la ville d'arrivé du trajet
+	// [Méthode héritée de Trajet] Renvoi la ville d'arrivé du trajet
 	// Contrat :
 	
-	const void Affiche() const;
+	void Affiche() const;
 	// Mode d'emploi :
-	// Affiche le trajet
+	// [Méthode héritée de Trajet] Affiche le trajet
 	// Contrat :
 
 	void Ajoute(const Trajet* trajet);
 	// Mode d'emploi :
 	// Ajoute le trajet à la liste des trajets 
 	// Contrat :
-	// trajet non null
+	// {trajet} non null
 
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -59,19 +59,17 @@ public:
 	// Mode d'emploi :
 	// Constructeur vide
 	// Contrat :
-	// 
 
 	TrajetCompose(TrajetCompose* src);
 	// Mode d'emploi :
 	// Constructeur de copie, possède les mêmes trajets (par adresses)
 	// Contrat :
-	// 
+	// {src} non null
 
 	virtual ~TrajetCompose();
 	// Mode d'emploi :
 	// Supprime les trajets internes
 	// Contrat :
-	//
 
 //------------------------------------------------------------------ PRIVE
 
