@@ -57,22 +57,24 @@ void TrajetListe::Supprimer(const int pos)
 // sinon supprimer l'élement en (pos+1)ème position de la liste 
 // (sans le supprimer de la mémoire)
 {
-	if (Vide())
+	if (!length) //si vide
 		return;
 
 	length--;
 	if (pos == 0) {
 		premier = premier->suivant;
-		if (Vide())
+		if (!length) //si désormais vide
 			dernier = nullptr;
 		return;
 	}
 
+	//recherche l'élément juste avant l'élément à supprimer (ième élément)
 	Element* before = premier;
 	for (int i = 1; i < pos; i++) {
 		before = before->suivant;
 	}
 	if (before->suivant != nullptr){
+		//Element pour lequel la mémoire doit être libérée
 		Element* toFree = before->suivant;
 
 		before->suivant = toFree->suivant;
@@ -82,25 +84,17 @@ void TrajetListe::Supprimer(const int pos)
 
 	if (before->suivant == nullptr)
 		dernier = before;
-}
+}//----- fin de Supprimer
 
 const Trajet* TrajetListe::Premier() const
 // Algorithme :
 // retourne le premier trajet (null si la liste est vide)
 {
-	if (Vide()) {
+	if (!length) {
 		return nullptr;
 	}
 	return premier->contenu;
-	return nullptr;
-}
-
-Element* TrajetListe::PremierElement() const 
-// Algorithme :
-// Retourne le premier element
-{
-	return premier;
-}
+}//----- fin de Premier
 
 const Trajet* TrajetListe::Dernier()  const
 // Algorithme :
@@ -110,15 +104,7 @@ const Trajet* TrajetListe::Dernier()  const
 		return nullptr;
 	}
 	return dernier->contenu;
-	return nullptr;
-}
-
-int TrajetListe::Vide() const
-// Algorithme :
-// Retourne si la liste est vide, cad si il n'y a pas de premier élément
-{
-	return premier == nullptr;
-} //----- Fin de Vide
+}//----- fin de Dernier
 
 
 int TrajetListe::Taille() const {
@@ -127,55 +113,55 @@ int TrajetListe::Taille() const {
 
 IElement TrajetListe::begin() const
 // Algorithme :
-// [Méthode système] retourne le premier élément, indice 0
+// [Méthode système] retourne le premier élément d'ittération, indice 0
 {
 	IElement res = IElement();
 	res.p = premier;
 	res.pos = 0;
 	return res;
-}
+}//----- fin de begin
 
 IElement TrajetListe::end() const
 // Algorithme :
-// [Méthode système] retourne le dernier élément, indice {length}
+// [Méthode système] retourne le dernier élément d'ittération, indice {length}
 {
 	IElement res = IElement();
 	res.p = dernier;
 	res.pos = length;
 	return res;
-}
+}//----- fin de end
 
 //------------------------------------------------- Surcharge d'opérateurs
 
 bool sIElement::operator!=(struct sIElement rhs)
 // Algorithme :
-// retourne si les {IElement}s sont différents (indices différents) 
+// retourne si les [IElement]s sont différents (indices différents) 
 {
 	return pos != rhs.pos;
-}
+}//----- fin de operator!=
 
 const Trajet* sIElement::operator*()
 // Algorithme :
 // retourne la valeur de l'élément : Element->Trajet
 {
 	return p->contenu;
-}
+}//----- fin de operator*
 
 void sIElement::operator++()
 // Algorithme :
-// passe à l'élément itérable suivant : pos++ et Element = Element->suivant
+// passe à l'élément ittérable suivant : pos++ et Element = Element->suivant
 {
 	++pos;
 	p = p->suivant;
-}
+}//----- fin de operator++
 
-void TrajetListe::deleteElements() {
+void TrajetListe::deleteElements()
 // Algorithme :
-// libère l'espace mémoire de tout les trajets de la liste
-
+// libère l'espace mémoire de tous les trajets de la liste
+{
 	for (const Trajet* t : *this)
 		delete t;
-}
+}//----- fin de deleteElements
 
 //-------------------------------------------- Constructeurs - destructeur
 TrajetListe::TrajetListe()
@@ -196,8 +182,7 @@ TrajetListe::TrajetListe(TrajetListe* liste)
 #endif
 	for (const Trajet* t : *liste)
 		Ajouter(t);
-} //----- Fin de TrajetListe (constructeur)
-
+} //----- Fin de TrajetListe (constructeur de copie)
 
 TrajetListe::~TrajetListe()
 // Algorithme :
@@ -213,14 +198,6 @@ TrajetListe::~TrajetListe()
 	}
 	premier = nullptr;
 	length = 0;
-	/*for (Element* curr = premier; curr != nullptr; curr = premier) {
-		premier = curr->suivant;
-		delete curr->contenu;
-		delete curr;
-	}
-	premier = nullptr;*/
-	//foreachElement = nullptr;
-	//foreachIndex = -1;
 } //----- Fin de ~TrajetListe
 
 //------------------------------------------------------------------ PRIVE
