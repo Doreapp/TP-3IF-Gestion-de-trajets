@@ -42,33 +42,25 @@ typedef struct sIElement {
 	//Indice de l'itération
 	int pos;
 
-	//Opérateur de comparaison [utilisé pour l'itération]
+//------------------------------------------------ Surcharges d'opérateurs
+	//Opérateur de comparaison 	[utilisé pour l'itération]
 	bool operator!=(struct sIElement rhs);
 
-	//Opérateur de valeur [utilisé pour l'itération]
+	//Opérateur de valeur 		[utilisé pour l'itération]
 	const Trajet* operator*();
 
-	//Opérateur d'incrémentation [utilisé pour l'itération]
+	//Opérateur d'incrémentation 	[utilisé pour l'itération]
 	void operator++();
 } IElement;
 
 class TrajetListe
 {
-	//----------------------------------------------------------------- PUBLIC
-
+//----------------------------------------------------------------- PUBLIC
 public:
-	//----------------------------------------------------- Méthodes publiques
-
+//----------------------------------------------------- Méthodes publiques
 		const Trajet* Premier() const;
 		// Mode d'emploi :
 		// Retourne le premier trajet
-		// Et initialise un foreach
-		// Contrat :
-		// null si la liste est vide
-
-		Element* PremierElement() const;
-		// Mode d'emploi :
-		// Retourne le premier element de la liste
 		// Contrat :
 		// null si la liste est vide
 
@@ -90,53 +82,44 @@ public:
 		// Contrat :
 		// 0 <= pos < {length}
 
-		int Vide() const;
-		// Mode d'emploi :
-		// Retourne 1 (true) si la liste est vide, 0 (false) sinon
-		// Contrat :
-		//
-
 		int Taille() const;
 		// Mode d'emploi :
 		// Retourne la taille de la liste
+		// Contrat :
 
 		IElement begin() const;
 		// Mode d'emploi :
 		// [Méthode système] utilisée pour initialiser un foreach
 		// Contrat :
-		//
 
 		IElement end() const;
 		// Mode d'emploi :
 		// [Méthode système] utilisée pour finir correctement un foreach
 		// Contrat :
-		//
 
 		void deleteElements();
 		// Mode d'emploi :
 		// Appelle le destructeur de chaque trajet de la liste
 
-	//------------------------------------------------- Surcharge d'opérateurs
-
+//------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
 	TrajetListe();
 	// Mode d'emploi :
 	// Constructeur simple d'une liste vide
 	// Contrat :
-	//
 
 	TrajetListe(TrajetListe* liste);
 	// Mode d'emploi :
 	// Constructeur de copie
+	// La nouvelle liste contient les mêmes éléments (en terme d'adresse)
+	// que la liste en paramètre
 	// Contrat :
-	//
 
 	virtual ~TrajetListe();
 	// Mode d'emploi :
-	// Supprime la liste et chacun de ses éléments
+	// Supprime la liste (sans ses éléments)
 	// Contrat :
-	//
 
 //------------------------------------------------------------------ PRIVE
 
