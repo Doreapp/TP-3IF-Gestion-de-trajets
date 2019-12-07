@@ -19,17 +19,16 @@
 
 //------------------------------------------------------------------------
 // Rôle de la classe <TrajetSimple>
-//
+// Représente un trajet 'simple' entre deux villes avec un unique moyen de transport
 //
 //------------------------------------------------------------------------
 
 class TrajetSimple : public Trajet
 {
-	//----------------------------------------------------------------- PUBLIC
-
+//----------------------------------------------------------------- PUBLIC
 public:
-	//----------------------------------------------------- Méthodes publiques
-	//----------------------------------------------------Méthodes surchargées
+//----------------------------------------------------- Méthodes publiques
+//----------------------------------------------------Méthodes surchargées
 	char* GetVilleDepart() const;
 	// Mode d'emploi :
 	// Renvoi la ville de départ du trajet
@@ -40,27 +39,26 @@ public:
 	// Renvoi la ville d'arrivé du trajet
 	// Contrat :
 	
-	const void Affiche() const;
+	void Affiche() const;
 	// Mode d'emploi :
 	// Affiche le trajet
 	// Contrat :
 
-	//------------------------------------------------- Surcharge d'opérateurs
+//------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
 	TrajetSimple(const char* villeDepart, const char* villeArrivee, const char* transport);
 	// Mode d'emploi :
-	//		villeDepart représente la ville de départ du trajet
-	//		villeArrivee représente la ville d'arrivée du trajet
-	//		transport représente le moyen de transport utilisé
+	// {villeDepart} représente la ville de départ du trajet
+	// {villeArrivee} représente la ville d'arrivée du trajet
+	// {transport} représente le moyen de transport utilisé
 	// Contrat :
-	//
+	// Tous les paramètres non null
 
 	virtual ~TrajetSimple();
 	// Mode d'emploi :
-	//
+	// Destructeur de trajet simple
 	// Contrat :
-	//
 
 //------------------------------------------------------------------ PRIVE
 
