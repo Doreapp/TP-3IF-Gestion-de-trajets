@@ -29,7 +29,7 @@ char* TrajetCompose::GetVilleDepart() const
 // Retourne la ville de départ du trajet (donc celle du premier trajet)
 // Retourne null si le trajet est vide
 {
-	if (liste->Vide())
+	if (!liste->Taille())
 		return nullptr;
 
 	return liste->Premier()->GetVilleDepart();
@@ -40,17 +40,18 @@ char* TrajetCompose::GetVilleArrivee() const
 // Retourne la ville d'arrivée du trajet (donc celle du dernier trajet)
 // Retourne null si le trajet est vide
 {
-	if (liste->Vide())
+	if (!liste->Taille())
 		return nullptr;
 
 	return liste->Dernier()->GetVilleArrivee();
 } //----- Fin de GetVilleArrivee
 
-const void TrajetCompose::Affiche() const
+void TrajetCompose::Affiche() const
 // Algorithme :
 // Affiche chaque trajet interne séparés par des -
+// Affiche '{Vide}' Si le trajet n'est composé d'aucun trajet
 {
-	if (liste->Vide()) {
+	if (!liste->Taille()) {
 		cout << "{Vide}";
 		return;
 	}
@@ -68,23 +69,16 @@ const void TrajetCompose::Affiche() const
 		if (++index < length)
 			cout << " - ";
 	}
-	/*Element* curr = liste->PremierElement();
-	while (curr != nullptr) {
-		curr->contenu->Affiche();
-		curr = curr->suivant;
-		if (curr != nullptr)
-			cout << " - ";
-	}*/
 } //----- Fin de Affiche
 
 void TrajetCompose::Ajoute(const Trajet* trajet)
 // Algorithme :
-// lie l'actuel dernier élément à un nouoveau élément (lié au trajet en paramètre)
+// lie l'actuel dernier élément à un nouvel élément (lié au trajet en paramètre)
 // pointe dernier vers le nouvele élément créé
 // Affiche une erreur si l'actuelle ville d'arrivée ne correspond pas à la ville
 // de départ du trajet à ajouter
 {
-	if (liste->Vide()) {
+	if (!liste->Taille()) {
 		liste->Ajouter(trajet);
 		return;
 	}
@@ -128,7 +122,7 @@ TrajetCompose::TrajetCompose(TrajetCompose* src)
 
 TrajetCompose::~TrajetCompose()
 // Algorithme :
-// Supprime la liste 
+// Supprime la liste et ses éléments
 {
 #ifdef MAP
 	cout << "Appel au destructeur de <TrajetCompose>" << endl;
