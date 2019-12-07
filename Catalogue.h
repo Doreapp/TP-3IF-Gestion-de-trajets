@@ -31,7 +31,7 @@ class Catalogue
 public:
 //----------------------------------------------------- Méthodes publiques
 
-	const void Affiche() const;
+	void Affiche() const;
 	// Mode d'emploi :
 	// Affiche le catalogue sur le terminal
 	// Contrat :
