@@ -1,5 +1,5 @@
 /*******************************************************************************
-						   main  -  Fichier principale de l'application
+						   main  -  Fichier principal de l'application
 							 -------------------
 	début                : 22/11/2019
 	copyright            : (C) 2019-2020 par CARREAU Damien et MANDIN Antoine
@@ -94,7 +94,6 @@ int main()
 
 				do {
 					if (!strcmp(lecture, "0")) {
-#pragma warning(suppress : 4996)
 						strcpy(ville_depart, ville_arrive);
 					}
 
