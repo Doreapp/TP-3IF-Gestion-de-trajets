@@ -39,6 +39,7 @@ int main()
 	char lecture[100];
 	Catalogue* catalogue = new Catalogue();
 
+	//Jeu d'esssai de base
 	Trajet* ts1 = new TrajetSimple("Lyon", "Paris", "Voiture");
 	catalogue->Ajoute(ts1);
 	Trajet* ts2 = new TrajetSimple("Paris", "Lille", "Train");
@@ -57,7 +58,11 @@ int main()
 	catalogue->Ajoute(new TrajetSimple("D", "B", "o"));
 	catalogue->Ajoute(new TrajetSimple("A", "E", "o"));
 
-	cout << "Bienvenue dans le menu, vous avez accés à différentes fonctionnalitées\n     Ajout - permet d'ajouter un trajet à votre catalogue\n     Affichage - permet d'afficher votre catalogue\n     Recherche - retourne les trajets du catalogue allant d'une ville A à une autre B\n     Quitter - Clos le programme\n";
+	cout << "Bienvenue dans le menu, vous avez accés à différentes fonctionnalitées\n"
+		<< "Ajout - permet d'ajouter un trajet à votre catalogue\n"
+		<< "Affichage - permet d'afficher votre catalogue\n"
+		<< "Recherche - retourne les trajets du catalogue allant d'une ville A à une autre B\n"
+		<< "Quitter - Clos le programme\n";
 
 	char ville_depart[100];
 	char ville_arrive[100];
@@ -75,8 +80,10 @@ int main()
 				cin >> ville_arrive;
 				cout << "Entrez votre moyen de transport\n";
 				cin >> moyen;
+				
 				Trajet* trajet = new TrajetSimple(ville_depart, ville_arrive, moyen);
 				catalogue->Ajoute(trajet);
+				
 				cout << "Votre trajet a bien été ajouté\n";
 			}
 			else if (!strcmp(lecture, "1")) {
