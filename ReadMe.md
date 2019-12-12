@@ -56,4 +56,9 @@ D. Conclusion
 
 E. Utilisation du programme : 
   Une fois l'executable lancé, un menu des actions disponibles sera afficher, voici un récapitilatif : 
+  "Ajout"         -> Permet d'ajouter un trajet simple ou composé au catalogue 
+  "Affichage"     -> Affiche le contenu du catalogue sur la console
+  "Recherche"     -> Recherche (de la manière souhaitée*) un trajet dans le catalogue
+  "Quitter"       -> Clos proprement le programme
   
+  *recherche simple ou avancée
