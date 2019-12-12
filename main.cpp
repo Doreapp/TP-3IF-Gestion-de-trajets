@@ -39,25 +39,6 @@ int main()
 	char lecture[100];
 	Catalogue* catalogue = new Catalogue();
 
-	//Jeu d'esssai de base
-	Trajet* ts1 = new TrajetSimple("Lyon", "Paris", "Voiture");
-	catalogue->Ajoute(ts1);
-	Trajet* ts2 = new TrajetSimple("Paris", "Lille", "Train");
-	catalogue->Ajoute(ts2);
-	TrajetCompose* tc1 = new TrajetCompose();
-	tc1->Ajoute(new TrajetSimple("Nimes", "Lyon", "Bus"));
-	tc1->Ajoute(new TrajetSimple("Lyon", "Grenoble", "Voiture"));
-	catalogue->Ajoute(tc1);
-
-	catalogue->Ajoute(new TrajetSimple("A", "B", "o"));
-	catalogue->Ajoute(new TrajetSimple("B", "C", "o"));
-	catalogue->Ajoute(new TrajetSimple("C", "D", "o"));
-	catalogue->Ajoute(new TrajetSimple("D", "A", "o"));
-	catalogue->Ajoute(new TrajetSimple("E", "B", "o"));
-	catalogue->Ajoute(new TrajetSimple("E", "F", "o"));
-	catalogue->Ajoute(new TrajetSimple("D", "B", "o"));
-	catalogue->Ajoute(new TrajetSimple("A", "E", "o"));
-
 	cout << "Bienvenue dans le menu, vous avez accés à différentes fonctionnalitées\n"
 		<< "Ajout - permet d'ajouter un trajet à votre catalogue\n"
 		<< "Affichage - permet d'afficher votre catalogue\n"
