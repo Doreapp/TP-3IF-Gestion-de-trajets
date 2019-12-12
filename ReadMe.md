@@ -53,3 +53,7 @@ D. Conclusion
   Axes d’évolutions :
 - Ajouter différente notion sur chaque trajet : Distance, Temps, Coût. Ce qui permettrait, à l’aide d’une nouvelle recherche, de donner à l’utilisateur les trajets les plus intéressants pour lui suivant la notion qu’il choisit.
 - Ajouter une interface graphique (sans console)
+
+E. Utilisation du programme : 
+  Une fois l'executable lancé, un menu des actions disponibles sera afficher, voici un récapitilatif : 
+  
